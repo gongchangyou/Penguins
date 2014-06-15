@@ -236,14 +236,8 @@
 		1AAF515F180E2C1A000584C8 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC1180E2C17000584C8 /* Test.cpp */; };
 		1AAF5160180E2C1A000584C8 /* TestEntries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */; };
 		1AAF5161180E2C1A000584C8 /* TestEntries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */; };
-		1AAF5182180E2C1A000584C8 /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5019180E2C18000584C8 /* controller.cpp */; };
-		1AAF5183180E2C1A000584C8 /* controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5019180E2C18000584C8 /* controller.cpp */; };
-		1AAF5236180E2C1A000584C8 /* testBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5125180E2C1A000584C8 /* testBasic.cpp */; };
-		1AAF5237180E2C1A000584C8 /* testBasic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5125180E2C1A000584C8 /* testBasic.cpp */; };
 		1AAF524C180E2C1A000584C8 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5145180E2C1A000584C8 /* VisibleRect.cpp */; };
 		1AAF524D180E2C1A000584C8 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5145180E2C1A000584C8 /* VisibleRect.cpp */; };
-		1AAF524E180E2C1A000584C8 /* ZwoptexTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5148180E2C1A000584C8 /* ZwoptexTest.cpp */; };
-		1AAF524F180E2C1A000584C8 /* ZwoptexTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5148180E2C1A000584C8 /* ZwoptexTest.cpp */; };
 		1AAF5269180E2C26000584C8 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5253180E2C26000584C8 /* RootViewController.mm */; };
 		1AAF526A180E2C26000584C8 /* testsAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5255180E2C26000584C8 /* testsAppDelegate.mm */; };
 		1AAF526B180E2C26000584C8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AAF5256180E2C26000584C8 /* Default-568h@2x.png */; };
@@ -348,6 +342,14 @@
 		460E45871807FDC3000CDD6D /* libCocosDenshion Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FB81807A4F9005B8026 /* libCocosDenshion Mac.a */; };
 		460E45DF18080238000CDD6D /* libcocos2dx iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FBE1807A4F9005B8026 /* libcocos2dx iOS.a */; };
 		460E45E018080238000CDD6D /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FC61807A4F9005B8026 /* libCocosDenshion iOS.a */; };
+		81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
+		81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
+		81C6852C194DDF1D00903F2B /* OnseSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */; };
+		81C6852D194DE04600903F2B /* OnseSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */; };
+		81C68530194DE10B00903F2B /* PickItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852E194DE10B00903F2B /* PickItem.cpp */; };
+		81C68531194DE11600903F2B /* PickItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852E194DE10B00903F2B /* PickItem.cpp */; };
+		81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68535194DE24B00903F2B /* BattleScene.cpp */; };
+		81C68537194DE34000903F2B /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68535194DE24B00903F2B /* BattleScene.cpp */; };
 		A01E16881784BDA100B0CA4A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482E165F399D007D4F18 /* libz.dylib */; };
 		A01E16891784BDA100B0CA4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C64832165F3AFD007D4F18 /* Foundation.framework */; };
 		A01E168A1784BDA100B0CA4A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482C165F3988007D4F18 /* AudioToolbox.framework */; };
@@ -1385,16 +1387,10 @@
 		1AAF4FC2180E2C17000584C8 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
 		1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestEntries.cpp; sourceTree = "<group>"; };
 		1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneSidedPlatform.h; path = Tests/OneSidedPlatform.h; sourceTree = "<group>"; };
-		1AAF5019180E2C18000584C8 /* controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controller.cpp; sourceTree = "<group>"; };
-		1AAF501A180E2C18000584C8 /* controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = controller.h; sourceTree = "<group>"; };
-		1AAF5125180E2C1A000584C8 /* testBasic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testBasic.cpp; sourceTree = "<group>"; };
-		1AAF5126180E2C1A000584C8 /* testBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testBasic.h; sourceTree = "<group>"; };
 		1AAF5127180E2C1A000584C8 /* testResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testResource.h; sourceTree = "<group>"; };
 		1AAF5128180E2C1A000584C8 /* tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
 		1AAF5145180E2C1A000584C8 /* VisibleRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisibleRect.cpp; sourceTree = "<group>"; };
 		1AAF5146180E2C1A000584C8 /* VisibleRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleRect.h; sourceTree = "<group>"; };
-		1AAF5148180E2C1A000584C8 /* ZwoptexTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZwoptexTest.cpp; sourceTree = "<group>"; };
-		1AAF5149180E2C1A000584C8 /* ZwoptexTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZwoptexTest.h; sourceTree = "<group>"; };
 		1AAF5252180E2C26000584C8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		1AAF5253180E2C26000584C8 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = "<group>"; };
 		1AAF5254180E2C26000584C8 /* testsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testsAppDelegate.h; sourceTree = "<group>"; };
@@ -1459,6 +1455,13 @@
 		37C8197F1875DF2B00930C57 /* zwoptex */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zwoptex; path = ../samples/Cpp/TestCpp/Resources/zwoptex; sourceTree = "<group>"; };
 		46A15F9C1807A4F8005B8026 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		81C6851F194D7F8700903F2B /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleScene.h; sourceTree = "<group>"; };
+		81C68522194DCCFC00903F2B /* CommonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtils.cpp; sourceTree = "<group>"; };
+		81C68523194DCCFC00903F2B /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		81C68525194DCDF000903F2B /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnseSidePlatform.cpp; sourceTree = "<group>"; };
+		81C6852E194DE10B00903F2B /* PickItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PickItem.cpp; sourceTree = "<group>"; };
+		81C6852F194DE10B00903F2B /* PickItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickItem.h; sourceTree = "<group>"; };
+		81C68535194DE24B00903F2B /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleScene.cpp; sourceTree = "<group>"; };
 		A01E16931784BDA100B0CA4A /* Simple Game iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Game iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01E17721784C06E00B0CA4A /* Test JavaScript iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test JavaScript iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01E18571784C45500B0CA4A /* JS Watermelon With Me iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JS Watermelon With Me iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1964,21 +1967,22 @@
 		1AAF4FA5180E2C17000584C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				81C68535194DE24B00903F2B /* BattleScene.cpp */,
 				81C6851F194D7F8700903F2B /* BattleScene.h */,
+				81C6852E194DE10B00903F2B /* PickItem.cpp */,
+				81C6852F194DE10B00903F2B /* PickItem.h */,
 				1AAF4FB5180E2C17000584C8 /* AppDelegate.cpp */,
 				1AAF4FB6180E2C17000584C8 /* AppDelegate.h */,
 				1AAF4FB7180E2C17000584C8 /* BaseTest.cpp */,
 				1AAF4FB8180E2C17000584C8 /* BaseTest.h */,
 				1AAF4FBC180E2C17000584C8 /* Box2DTestBed */,
-				1AAF5019180E2C18000584C8 /* controller.cpp */,
-				1AAF501A180E2C18000584C8 /* controller.h */,
-				1AAF5125180E2C1A000584C8 /* testBasic.cpp */,
-				1AAF5126180E2C1A000584C8 /* testBasic.h */,
 				1AAF5127180E2C1A000584C8 /* testResource.h */,
 				1AAF5128180E2C1A000584C8 /* tests.h */,
 				1AAF5145180E2C1A000584C8 /* VisibleRect.cpp */,
 				1AAF5146180E2C1A000584C8 /* VisibleRect.h */,
-				1AAF5147180E2C1A000584C8 /* ZwoptexTest */,
+				81C68522194DCCFC00903F2B /* CommonUtils.cpp */,
+				81C68523194DCCFC00903F2B /* CommonUtils.h */,
+				81C68525194DCDF000903F2B /* Constant.h */,
 			);
 			name = Classes;
 			path = ../samples/Cpp/TestCpp/Classes;
@@ -1995,17 +1999,9 @@
 				1AAF4FC2180E2C17000584C8 /* Test.h */,
 				1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */,
 				1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */,
+				81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */,
 			);
 			path = Box2DTestBed;
-			sourceTree = "<group>";
-		};
-		1AAF5147180E2C1A000584C8 /* ZwoptexTest */ = {
-			isa = PBXGroup;
-			children = (
-				1AAF5148180E2C1A000584C8 /* ZwoptexTest.cpp */,
-				1AAF5149180E2C1A000584C8 /* ZwoptexTest.h */,
-			);
-			path = ZwoptexTest;
 			sourceTree = "<group>";
 		};
 		1AAF5250180E2C26000584C8 /* proj.ios */ = {
@@ -2402,8 +2398,8 @@
 			buildConfigurationList = A035A5E91782290400987F6C /* Build configuration list for PBXNativeTarget "Test JavaScript Mac" */;
 			buildPhases = (
 				A035A54F1782290400987F6C /* Resources */,
-				A035A5701782290400987F6C /* Sources */,
 				A035A5DA1782290400987F6C /* Frameworks */,
+				A035A5701782290400987F6C /* Sources */,
 			);
 			buildRules = (
 			);
@@ -3066,10 +3062,7 @@
 				1AAF515C180E2C1A000584C8 /* GLES-Render.cpp in Sources */,
 				1AAF515E180E2C1A000584C8 /* Test.cpp in Sources */,
 				1AAF5160180E2C1A000584C8 /* TestEntries.cpp in Sources */,
-				1AAF5182180E2C1A000584C8 /* controller.cpp in Sources */,
-				1AAF5236180E2C1A000584C8 /* testBasic.cpp in Sources */,
 				1AAF524C180E2C1A000584C8 /* VisibleRect.cpp in Sources */,
-				1AAF524E180E2C1A000584C8 /* ZwoptexTest.cpp in Sources */,
 				1AAF5289180E2C31000584C8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3162,6 +3155,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C68530194DE10B00903F2B /* PickItem.cpp in Sources */,
+				81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */,
+				81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */,
+				81C6852C194DDF1D00903F2B /* OnseSidePlatform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3169,16 +3166,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81C68537194DE34000903F2B /* BattleScene.cpp in Sources */,
+				81C68531194DE11600903F2B /* PickItem.cpp in Sources */,
+				81C6852D194DE04600903F2B /* OnseSidePlatform.cpp in Sources */,
+				81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */,
 				1AAF5155180E2C1A000584C8 /* AppDelegate.cpp in Sources */,
 				1AAF5157180E2C1A000584C8 /* BaseTest.cpp in Sources */,
 				1AAF515B180E2C1A000584C8 /* Box2dView.cpp in Sources */,
 				1AAF515D180E2C1A000584C8 /* GLES-Render.cpp in Sources */,
 				1AAF515F180E2C1A000584C8 /* Test.cpp in Sources */,
 				1AAF5161180E2C1A000584C8 /* TestEntries.cpp in Sources */,
-				1AAF5183180E2C1A000584C8 /* controller.cpp in Sources */,
-				1AAF5237180E2C1A000584C8 /* testBasic.cpp in Sources */,
 				1AAF524D180E2C1A000584C8 /* VisibleRect.cpp in Sources */,
-				1AAF524F180E2C1A000584C8 /* ZwoptexTest.cpp in Sources */,
 				1AAF5269180E2C26000584C8 /* RootViewController.mm in Sources */,
 				1AAF526A180E2C26000584C8 /* testsAppDelegate.mm in Sources */,
 				1AAF527B180E2C26000584C8 /* main.m in Sources */,

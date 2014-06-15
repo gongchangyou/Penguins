@@ -1,7 +1,6 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
-#include "controller.h"
 #include "SimpleAudioEngine.h"
 #include "cocostudio/CocoStudio.h"
 #include "extensions/cocos-ext.h"

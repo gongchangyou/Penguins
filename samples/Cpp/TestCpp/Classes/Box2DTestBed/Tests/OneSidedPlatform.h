@@ -18,6 +18,8 @@
 
 #ifndef ONE_SIDED_PLATFORM_H
 #define ONE_SIDED_PLATFORM_H
+#include "cocos2d.h"
+#include "Test.h"
 USING_NS_CC;
 
 class actor:public Object{
@@ -191,13 +193,13 @@ public:
         
 		if (fixtureA == m_platform)
 		{
-			log("a is platform");
+			//log("a is platform");
             fixtureB->GetBody()->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
 		}
         
 		if (fixtureB == m_platform)
 		{
-			log("b is platform");
+			//log("b is platform");
 		}
         
         if (fixtureA == m_rock) {
@@ -207,7 +209,7 @@ public:
                 }
             }
             
-            log("a is rock");
+            //log("a is rock");
         }
         
         if (fixtureA == m_cannon) {
@@ -221,11 +223,11 @@ public:
             //播放动画 结束了之后飞起来
 //            m_character->GetBody()->SetTransform(m_cannon->GetBody()->GetPosition(), 0.f);
 //            m_character->GetBody()->SetLinearVelocity(b2Vec2(3.0f,15.f));
-            log("a is m_cannon");
+            //log("a is m_cannon");
         }
         
         if (fixtureB == m_rock) {
-            log("b is rock");
+            //log("b is rock");
         }
 	}
     
@@ -245,7 +247,8 @@ public:
     
     std::map<int, actor*> m_characters;
     
-    
+public:
+    Point getItemFinalPos(Point itemPos);
 };
 
 

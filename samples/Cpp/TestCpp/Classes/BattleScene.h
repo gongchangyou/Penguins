@@ -10,38 +10,29 @@
 #define __CrossKaiser__BattleScene__
 
 #include "cocos2d.h"
+#include "Constant.h"
+#include "pickItem.h"
+#include "CommonUtils.h"
+#include "Box2dView.h"
 USING_NS_CC;
-
+const int TAG_ITEM = 100;
 class BattleScene : public Layer{
 public:
     CREATE_FUNC(BattleScene);
-    virtual bool init(){
-        if (!Layer::init()) {
-            return false;
-        }
-        
-        auto director = Director::getInstance();
-        Point visibleOrigin = director->getVisibleOrigin();
-        Size visibleSize = director->getVisibleSize();
-        
-        Box2DView* view = Box2DView::viewWithEntryID( 7 );
-        addChild(view);
-        view->setScale(15);
-        view->setAnchorPoint( Point(0,0) );
-        view->setPosition( Point(visibleOrigin.x+visibleSize.width/2, visibleOrigin.y+visibleSize.height/3) );
-        return true;
-
-    };
     
-    static Scene* scene(){
-        Scene* scene = Scene::create();
-        BattleScene *layer = BattleScene::create();
-        scene->addChild(layer);
-        return scene;
-    };
+    BattleScene();
+    virtual ~BattleScene();
     
-    BattleScene(){};
-    virtual ~BattleScene(){};
+    virtual bool init();
+    
+    static Scene* scene();
+    bool onTouchBegan(Touch* touch, Event* event);
+    void onTouchMoved(Touch* touch, Event* event);
+    void onTouchEnded(Touch* touch, Event* event);
+private:
+    EventListenerTouchOneByOne * _touchListener;
+    CCSprite * m_item;
+    Box2DView * m_view;
     
 };
 #endif /* defined(__CrossKaiser__BattleScene__) */
