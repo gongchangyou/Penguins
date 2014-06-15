@@ -6,6 +6,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "extensions/cocos-ext.h"
 #include "Box2dView.h"
+#include "BattleScene.h"
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -75,13 +76,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     EGLView::getInstance()->setDesignResolutionSize(designSize.width, designSize.height, ResolutionPolicy::NO_BORDER);
     
-    auto scene = Scene::create();
-    scene->addChild(MenuLayer::menuWithEntryID(7));
-//    auto scene = Scene::create();
-//    auto layer = new TestController();
-//    layer->autorelease();
-//
-//    scene->addChild(layer);
+    auto scene = BattleScene::scene();
+
     director->runWithScene(scene);
 
     // Enable Remote Console

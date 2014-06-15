@@ -19,80 +19,9 @@ struct {
     // TESTS MUST BE ORDERED ALPHABETICALLY
     //     violators will be prosecuted
     //
-    { "AUnitTest", []() { return new UnitTestScene(); }},
-    { "ANewRenderTest", []() { return new NewRendererTestScene(); } },
-	{ "Accelerometer", []() { return new AccelerometerTestScene(); } },
-	{ "ActionManagerTest", [](){return new ActionManagerTestScene(); } },
-	{ "ActionsEaseTest", [](){return new ActionsEaseTestScene();} },
-	{ "ActionsProgressTest", [](){return new ProgressActionsTestScene(); } },
-	{ "ActionsTest", [](){ return new ActionsTestScene(); } },
-	{ "Box2dTest", []() { return new Box2DTestScene(); } },
+
 	{ "Box2dTestBed", []() { return new Box2dTestBedScene(); } },
-	{ "BugsTest", []() { return new BugsTestScene(); } },
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-	{ "ChipmunkTest", []() { return new ChipmunkAccelTouchTestScene(); } },
-#endif
-	{ "ClickAndMoveTest", [](){return new ClickAndMoveTestScene(); } },
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-	{ "ClippingNodeTest", []() { return new ClippingNodeTestScene(); } },
-#endif
-	{ "CocosDenshionTest", []() { return new CocosDenshionTestScene(); } },
-	{ "ConfigurationTest", []() { return new ConfigurationTestScene(); } },
-	{ "ConsoleTest", []() { return new ConsoleTestScene(); } },
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_EMSCRIPTEN)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_NACL)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-	{ "CurlTest", []() { return new CurlTestScene(); } },
-#endif
-#endif
-#endif
-#endif
-	{ "CurrentLanguageTest", []() { return new CurrentLanguageTestScene(); } },
-	{ "DrawPrimitivesTest", [](){return new DrawPrimitivesTestScene();} },
-    { "EventDispatcherTest(NEW)", []() { return new EventDispatcherTestScene(); } },
-	{ "EffectAdvancedTest", []() { return new EffectAdvanceScene(); } },
-	{ "EffectsTest", [](){return new EffectTestScene();} },
-	{ "ExtensionsTest", []() { return new ExtensionsTestScene(); } },
-	{ "FileUtilsTest", []() { return new FileUtilsTestScene(); } },
-	{ "FontTest", []() { return new FontTestScene(); } },
-	{ "IntervalTest", [](){return new IntervalTestScene(); } },
-	{ "KeyboardTest", []() { return new KeyboardTestScene(); } },
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-	{ "KeypadTest", []() { return new KeypadTestScene(); } },
-#endif
-	{ "LabelTest", [](){return new AtlasTestScene(); } },
-    { "LabelTestNew", [](){return new AtlasTestSceneNew(); } },
-	{ "LayerTest", [](){return new LayerTestScene();} },
-	{ "MenuTest", [](){return new MenuTestScene();} },
-	{ "MotionStreakTest", [](){return new MotionStreakTestScene();} },
-    { "MouseTest", []() { return new MouseTestScene(); } },
-	{ "MutiTouchTest", []() { return new MutiTouchTestScene(); } },
-	{ "NodeTest", [](){return new CocosNodeTestScene();} },
-	{ "ParallaxTest", [](){return new ParallaxTestScene(); } },
-	{ "ParticleTest", [](){return new ParticleTestScene(); } },
-	{ "PerformanceTest", []() { return new PerformanceTestScene(); } },
-	{ "PhysicsTest", []() { return new PhysicsTestScene(); } },
-    { "ReleasePoolTest", [](){ return new ReleasePoolTestScene(); } },
-	{ "RenderTextureTest", [](){return new RenderTextureScene(); } },
-	{ "RotateWorldTest", [](){return new RotateWorldTestScene(); } },
-	{ "SceneTest", [](){return new SceneTestScene();} },
-	{ "SchedulerTest", [](){return new SchedulerTestScene(); } },
-	{ "ShaderTest", []() { return new ShaderTestScene(); } },
-    { "ShaderTestSprite", []() { return new ShaderTestScene2(); } },
-	{ "SpineTest", []() { return new SpineTestScene(); } },
-	{ "SpriteTest", [](){return new SpriteTestScene(); } },
-	{ "TextInputTest", [](){return new TextInputTestScene(); } },
-	{ "Texture2DTest", [](){return new TextureTestScene(); } },
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-	{ "TextureCacheTest", []() { return new TextureCacheTestScene(); } },
-#endif
-	{ "TexturePackerEncryption", []() { return new TextureAtlasEncryptionTestScene(); } },
-	{ "TileMapTest", [](){return new TileMapTestScene(); } },
-	{ "TouchesTest", [](){return new PongScene();} },
-	{ "TransitionsTest", [](){return new TransitionsTestScene();} },
-	{ "UserDefaultTest", []() { return new UserDefaultTestScene(); } },
-	{ "ZwoptexTest", []() { return new ZwoptexTestScene(); } },
+	
 };
 
 static int g_testCount = sizeof(g_aTestNames) / sizeof(g_aTestNames[0]);
