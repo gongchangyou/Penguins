@@ -1384,51 +1384,7 @@
 		1AAF4FC1180E2C17000584C8 /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
 		1AAF4FC2180E2C17000584C8 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
 		1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestEntries.cpp; sourceTree = "<group>"; };
-		1AAF4FC5180E2C17000584C8 /* AddPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPair.h; sourceTree = "<group>"; };
-		1AAF4FC6180E2C17000584C8 /* ApplyForce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyForce.h; sourceTree = "<group>"; };
-		1AAF4FC7180E2C17000584C8 /* BodyTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BodyTypes.h; sourceTree = "<group>"; };
-		1AAF4FC8180E2C17000584C8 /* Breakable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Breakable.h; sourceTree = "<group>"; };
-		1AAF4FC9180E2C17000584C8 /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
-		1AAF4FCA180E2C17000584C8 /* BulletTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulletTest.h; sourceTree = "<group>"; };
-		1AAF4FCB180E2C17000584C8 /* Cantilever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cantilever.h; sourceTree = "<group>"; };
-		1AAF4FCC180E2C17000584C8 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
-		1AAF4FCD180E2C17000584C8 /* Chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chain.h; sourceTree = "<group>"; };
-		1AAF4FCE180E2C17000584C8 /* CharacterCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCollision.h; sourceTree = "<group>"; };
-		1AAF4FCF180E2C17000584C8 /* CollisionFiltering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionFiltering.h; sourceTree = "<group>"; };
-		1AAF4FD0180E2C17000584C8 /* CollisionProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionProcessing.h; sourceTree = "<group>"; };
-		1AAF4FD1180E2C17000584C8 /* CompoundShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompoundShapes.h; sourceTree = "<group>"; };
-		1AAF4FD2180E2C17000584C8 /* Confined.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Confined.h; sourceTree = "<group>"; };
-		1AAF4FD3180E2C17000584C8 /* ContinuousTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContinuousTest.h; sourceTree = "<group>"; };
-		1AAF4FD4180E2C17000584C8 /* DistanceTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceTest.h; sourceTree = "<group>"; };
-		1AAF4FD5180E2C17000584C8 /* Dominos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dominos.h; sourceTree = "<group>"; };
-		1AAF4FD6180E2C17000584C8 /* DumpShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DumpShell.h; sourceTree = "<group>"; };
-		1AAF4FD7180E2C17000584C8 /* DynamicTreeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicTreeTest.h; sourceTree = "<group>"; };
-		1AAF4FD8180E2C17000584C8 /* EdgeShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeShapes.h; sourceTree = "<group>"; };
-		1AAF4FD9180E2C17000584C8 /* EdgeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EdgeTest.h; sourceTree = "<group>"; };
-		1AAF4FDA180E2C17000584C8 /* Gears.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gears.h; sourceTree = "<group>"; };
-		1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneSidedPlatform.h; sourceTree = "<group>"; };
-		1AAF4FDC180E2C17000584C8 /* Pinball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pinball.h; sourceTree = "<group>"; };
-		1AAF4FDD180E2C17000584C8 /* PolyCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolyCollision.h; sourceTree = "<group>"; };
-		1AAF4FDE180E2C17000584C8 /* PolyShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolyShapes.h; sourceTree = "<group>"; };
-		1AAF4FDF180E2C17000584C8 /* Prismatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prismatic.h; sourceTree = "<group>"; };
-		1AAF4FE0180E2C17000584C8 /* Pulleys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pulleys.h; sourceTree = "<group>"; };
-		1AAF4FE1180E2C17000584C8 /* Pyramid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pyramid.h; sourceTree = "<group>"; };
-		1AAF4FE2180E2C17000584C8 /* RayCast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RayCast.h; sourceTree = "<group>"; };
-		1AAF4FE3180E2C17000584C8 /* Revolute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Revolute.h; sourceTree = "<group>"; };
-		1AAF4FE4180E2C17000584C8 /* Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rope.h; sourceTree = "<group>"; };
-		1AAF4FE5180E2C17000584C8 /* RopeJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RopeJoint.h; sourceTree = "<group>"; };
-		1AAF4FE6180E2C17000584C8 /* SensorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTest.h; sourceTree = "<group>"; };
-		1AAF4FE7180E2C17000584C8 /* ShapeEditing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeEditing.h; sourceTree = "<group>"; };
-		1AAF4FE8180E2C17000584C8 /* SliderCrank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCrank.h; sourceTree = "<group>"; };
-		1AAF4FE9180E2C17000584C8 /* SphereStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereStack.h; sourceTree = "<group>"; };
-		1AAF4FEA180E2C17000584C8 /* TheoJansen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheoJansen.h; sourceTree = "<group>"; };
-		1AAF4FEB180E2C17000584C8 /* Tiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tiles.h; sourceTree = "<group>"; };
-		1AAF4FEC180E2C17000584C8 /* TimeOfImpact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeOfImpact.h; sourceTree = "<group>"; };
-		1AAF4FED180E2C17000584C8 /* Tumbler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tumbler.h; sourceTree = "<group>"; };
-		1AAF4FEE180E2C17000584C8 /* VaryingFriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaryingFriction.h; sourceTree = "<group>"; };
-		1AAF4FEF180E2C17000584C8 /* VaryingRestitution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaryingRestitution.h; sourceTree = "<group>"; };
-		1AAF4FF0180E2C17000584C8 /* VerticalStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalStack.h; sourceTree = "<group>"; };
-		1AAF4FF1180E2C17000584C8 /* Web.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Web.h; sourceTree = "<group>"; };
+		1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneSidedPlatform.h; path = Tests/OneSidedPlatform.h; sourceTree = "<group>"; };
 		1AAF5019180E2C18000584C8 /* controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = controller.cpp; sourceTree = "<group>"; };
 		1AAF501A180E2C18000584C8 /* controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = controller.h; sourceTree = "<group>"; };
 		1AAF5125180E2C1A000584C8 /* testBasic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testBasic.cpp; sourceTree = "<group>"; };
@@ -1523,11 +1479,6 @@
 		A07A52BB1783AEB80073F6A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A07A52C11783B01F0073F6A7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		A07A53811784AC9B0073F6A7 /* Hello cpp iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hello cpp iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3AF01A8184313DE00A98B85 /* ConvexHull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvexHull.h; sourceTree = "<group>"; };
-		B3AF01A9184313DE00A98B85 /* ConveyorBelt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConveyorBelt.h; sourceTree = "<group>"; };
-		B3AF01AA184313DE00A98B85 /* Mobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mobile.h; sourceTree = "<group>"; };
-		B3AF01AB184313DE00A98B85 /* MobileBalanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileBalanced.h; sourceTree = "<group>"; };
-		B3AF01AC184313DE00A98B85 /* MotorJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MotorJoint.h; sourceTree = "<group>"; };
 		D60AE43317F7FFE100757E4B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EDCC747E17C455FD007B692C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -2043,66 +1994,9 @@
 				1AAF4FC1180E2C17000584C8 /* Test.cpp */,
 				1AAF4FC2180E2C17000584C8 /* Test.h */,
 				1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */,
-				1AAF4FC4180E2C17000584C8 /* Tests */,
+				1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */,
 			);
 			path = Box2DTestBed;
-			sourceTree = "<group>";
-		};
-		1AAF4FC4180E2C17000584C8 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				B3AF01A8184313DE00A98B85 /* ConvexHull.h */,
-				B3AF01A9184313DE00A98B85 /* ConveyorBelt.h */,
-				B3AF01AA184313DE00A98B85 /* Mobile.h */,
-				B3AF01AB184313DE00A98B85 /* MobileBalanced.h */,
-				B3AF01AC184313DE00A98B85 /* MotorJoint.h */,
-				1AAF4FC5180E2C17000584C8 /* AddPair.h */,
-				1AAF4FC6180E2C17000584C8 /* ApplyForce.h */,
-				1AAF4FC7180E2C17000584C8 /* BodyTypes.h */,
-				1AAF4FC8180E2C17000584C8 /* Breakable.h */,
-				1AAF4FC9180E2C17000584C8 /* Bridge.h */,
-				1AAF4FCA180E2C17000584C8 /* BulletTest.h */,
-				1AAF4FCB180E2C17000584C8 /* Cantilever.h */,
-				1AAF4FCC180E2C17000584C8 /* Car.h */,
-				1AAF4FCD180E2C17000584C8 /* Chain.h */,
-				1AAF4FCE180E2C17000584C8 /* CharacterCollision.h */,
-				1AAF4FCF180E2C17000584C8 /* CollisionFiltering.h */,
-				1AAF4FD0180E2C17000584C8 /* CollisionProcessing.h */,
-				1AAF4FD1180E2C17000584C8 /* CompoundShapes.h */,
-				1AAF4FD2180E2C17000584C8 /* Confined.h */,
-				1AAF4FD3180E2C17000584C8 /* ContinuousTest.h */,
-				1AAF4FD4180E2C17000584C8 /* DistanceTest.h */,
-				1AAF4FD5180E2C17000584C8 /* Dominos.h */,
-				1AAF4FD6180E2C17000584C8 /* DumpShell.h */,
-				1AAF4FD7180E2C17000584C8 /* DynamicTreeTest.h */,
-				1AAF4FD8180E2C17000584C8 /* EdgeShapes.h */,
-				1AAF4FD9180E2C17000584C8 /* EdgeTest.h */,
-				1AAF4FDA180E2C17000584C8 /* Gears.h */,
-				1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */,
-				1AAF4FDC180E2C17000584C8 /* Pinball.h */,
-				1AAF4FDD180E2C17000584C8 /* PolyCollision.h */,
-				1AAF4FDE180E2C17000584C8 /* PolyShapes.h */,
-				1AAF4FDF180E2C17000584C8 /* Prismatic.h */,
-				1AAF4FE0180E2C17000584C8 /* Pulleys.h */,
-				1AAF4FE1180E2C17000584C8 /* Pyramid.h */,
-				1AAF4FE2180E2C17000584C8 /* RayCast.h */,
-				1AAF4FE3180E2C17000584C8 /* Revolute.h */,
-				1AAF4FE4180E2C17000584C8 /* Rope.h */,
-				1AAF4FE5180E2C17000584C8 /* RopeJoint.h */,
-				1AAF4FE6180E2C17000584C8 /* SensorTest.h */,
-				1AAF4FE7180E2C17000584C8 /* ShapeEditing.h */,
-				1AAF4FE8180E2C17000584C8 /* SliderCrank.h */,
-				1AAF4FE9180E2C17000584C8 /* SphereStack.h */,
-				1AAF4FEA180E2C17000584C8 /* TheoJansen.h */,
-				1AAF4FEB180E2C17000584C8 /* Tiles.h */,
-				1AAF4FEC180E2C17000584C8 /* TimeOfImpact.h */,
-				1AAF4FED180E2C17000584C8 /* Tumbler.h */,
-				1AAF4FEE180E2C17000584C8 /* VaryingFriction.h */,
-				1AAF4FEF180E2C17000584C8 /* VaryingRestitution.h */,
-				1AAF4FF0180E2C17000584C8 /* VerticalStack.h */,
-				1AAF4FF1180E2C17000584C8 /* Web.h */,
-			);
-			path = Tests;
 			sourceTree = "<group>";
 		};
 		1AAF5147180E2C1A000584C8 /* ZwoptexTest */ = {
