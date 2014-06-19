@@ -20,6 +20,7 @@
 #define ONE_SIDED_PLATFORM_H
 #include "cocos2d.h"
 #include "Test.h"
+#include "PickItem.h"
 USING_NS_CC;
 
 class actor:public Object{
@@ -249,6 +250,7 @@ public:
     
 public:
     Point getItemFinalPos(Point itemPos);
+    void setItem(Object *item);
 };
 
 

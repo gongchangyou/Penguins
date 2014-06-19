@@ -31,8 +31,9 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
 private:
     EventListenerTouchOneByOne * _touchListener;
-    CCSprite * m_item;
+    Sprite * m_item;
     Box2DView * m_view;
+    OneSidedPlatform * m_contactListener;
     
 };
 #endif /* defined(__CrossKaiser__BattleScene__) */

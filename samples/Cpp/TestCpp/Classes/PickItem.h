@@ -20,7 +20,7 @@ public:
     CREATE_FUNC(PickItem);
 private:
     CC_SYNTHESIZE(int, m_type, Type);
-    CC_SYNTHESIZE_RETAIN(Sprite*, m_sprite, Sprite);
+    CC_SYNTHESIZE(Point, m_pos, Pos);
 };
 
 #endif /* defined(__PickItem__) */

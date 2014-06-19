@@ -8,9 +8,10 @@ struct TestEntry;
 class Test;
 class Box2DView : public Layer
 {
+private:
+    CC_SYNTHESIZE(OneSidedPlatform*, m_test, ContactListener);
     EventListenerTouchOneByOne* _touchListener;
     TestEntry*    m_entry;
-    OneSidedPlatform*        m_test;
     int            m_entryID;
 public:
     Box2DView(void);
@@ -28,9 +29,9 @@ public:
     //virtual void accelerometer(UIAccelerometer* accelerometer, Acceleration* acceleration);
 
     static Box2DView* viewWithEntryID(int entryId);
-    
-    Point getItemFinalPos(Point itemPos);
+    void setItem(Object *item);
 protected:
+    
     CustomCommand _customCmd;
     void onDraw();
 };

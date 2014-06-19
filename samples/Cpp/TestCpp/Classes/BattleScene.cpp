@@ -39,6 +39,10 @@ bool BattleScene::init(){
     m_view->setAnchorPoint( Point(0,0) );
     m_view->setPosition( Point(visibleOrigin.x+visibleSize.width/2, visibleOrigin.y+BOX2D_GROUND_Y) );
     log("x=%f, width=%f, y =%f, height=%f",visibleOrigin.x,visibleSize.width/2, visibleOrigin.y,BOX2D_GROUND_Y);
+    
+    //赋值m_contactListener
+    m_contactListener = m_view->getContactListener();
+    
     //添加游戏道具
     Sprite *arrow = Sprite::create("Images/arrows.png");
     arrow->setPosition(Point(240, 50));
@@ -82,7 +86,7 @@ void BattleScene::onTouchMoved(Touch* touch, Event* event)
         //给个阴影展示最终落到何处
         Point itemBox2DPos = CommonUtils::convertWinToBox2D(m_item->getPosition());
         log("itemBox2DPos x = %f, y=%f", itemBox2DPos.x, itemBox2DPos.y);
-        Point itemFinalPos = m_view->getItemFinalPos(itemBox2DPos);
+        Point itemFinalPos = m_contactListener->getItemFinalPos(itemBox2DPos);
         log("itemFinalPos x = %f, y=%f", itemFinalPos.x, itemFinalPos.y);
     }
 }
@@ -95,15 +99,24 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
     log("Box2DView::onTouchEnded, pos: %f,%f -> %f,%f", touchLocation.x, touchLocation.y, nodePosition.x, nodePosition.y);
     if ( m_item ){
         Point itemBox2DPos = CommonUtils::convertWinToBox2D(m_item->getPosition());
-        Point itemFinalPos = m_view->getItemFinalPos(itemBox2DPos);
+        Point itemFinalPos = m_contactListener->getItemFinalPos(itemBox2DPos);
         log("itemFinalPos x = %f, y=%f", itemFinalPos.x, itemFinalPos.y);
         Point endPos = CommonUtils::convertBox2DToWin(itemFinalPos);
         log("endPos x = %f, y=%f", endPos.x, endPos.y);
         //Point finalPos = endPos + Point(0, m_item->getContentSize().height);
-        m_item->runAction(MoveTo::create(.1f, endPos));
+        
+        float tmpTime = .1f;
+        m_item->runAction(MoveTo::create(tmpTime, endPos));
         m_item = NULL;
         
         //告诉box2d 在finalPos处 CommonUtils::convertWinToBox2D 添加炮台或者别的item
+        PickItem *pickItem = PickItem::create();
+        pickItem->setType(ITEM_CANNON);
+        pickItem->setPos(itemFinalPos);
+        Action * action =  __CCCallFuncO::create(m_view, callfuncO_selector(Box2DView::setItem), pickItem);
+        this->runAction(Sequence::create(DelayTime::create(tmpTime), action, NULL));
+        
+        
     }
     
 }

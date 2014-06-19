@@ -129,6 +129,9 @@ void Box2DView::onTouchEnded(Touch* touch, Event* event)
     m_test->MouseUp(b2Vec2(nodePosition.x,nodePosition.y));
 }
 
+void Box2DView::setItem(Object *item){
+    m_test->setItem(item);
+}
 // void Box2DView::accelerometer(UIAccelerometer* accelerometer, Acceleration* acceleration)
 // {
 //     //// Only run for valid values
@@ -138,6 +141,3 @@ void Box2DView::onTouchEnded(Touch* touch, Event* event)
 //     //}
 // } 
 
-Point Box2DView::getItemFinalPos(Point itemPos){
-    return m_test->getItemFinalPos(itemPos);
-}

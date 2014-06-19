@@ -10,10 +10,10 @@
 
 PickItem::PickItem(){
     m_type = 0;
-    m_sprite = NULL;
+    m_pos = Point::ZERO;
 }
 PickItem::~PickItem(){
-    CC_SAFE_RELEASE_NULL(m_sprite);
+
 }
 
 bool PickItem::init(){
