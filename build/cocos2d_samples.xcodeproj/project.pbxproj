@@ -234,8 +234,6 @@
 		1AAF515D180E2C1A000584C8 /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FBF180E2C17000584C8 /* GLES-Render.cpp */; };
 		1AAF515E180E2C1A000584C8 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC1180E2C17000584C8 /* Test.cpp */; };
 		1AAF515F180E2C1A000584C8 /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC1180E2C17000584C8 /* Test.cpp */; };
-		1AAF5160180E2C1A000584C8 /* TestEntries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */; };
-		1AAF5161180E2C1A000584C8 /* TestEntries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */; };
 		1AAF524C180E2C1A000584C8 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5145180E2C1A000584C8 /* VisibleRect.cpp */; };
 		1AAF524D180E2C1A000584C8 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5145180E2C1A000584C8 /* VisibleRect.cpp */; };
 		1AAF5269180E2C26000584C8 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AAF5253180E2C26000584C8 /* RootViewController.mm */; };
@@ -1385,7 +1383,6 @@
 		1AAF4FC0180E2C17000584C8 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		1AAF4FC1180E2C17000584C8 /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test.cpp; sourceTree = "<group>"; };
 		1AAF4FC2180E2C17000584C8 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestEntries.cpp; sourceTree = "<group>"; };
 		1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OneSidedPlatform.h; path = Tests/OneSidedPlatform.h; sourceTree = "<group>"; };
 		1AAF5127180E2C1A000584C8 /* testResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testResource.h; sourceTree = "<group>"; };
 		1AAF5128180E2C1A000584C8 /* tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tests.h; sourceTree = "<group>"; };
@@ -1997,7 +1994,6 @@
 				1AAF4FC0180E2C17000584C8 /* GLES-Render.h */,
 				1AAF4FC1180E2C17000584C8 /* Test.cpp */,
 				1AAF4FC2180E2C17000584C8 /* Test.h */,
-				1AAF4FC3180E2C17000584C8 /* TestEntries.cpp */,
 				1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */,
 				81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */,
 			);
@@ -3061,7 +3057,6 @@
 				1AAF515A180E2C1A000584C8 /* Box2dView.cpp in Sources */,
 				1AAF515C180E2C1A000584C8 /* GLES-Render.cpp in Sources */,
 				1AAF515E180E2C1A000584C8 /* Test.cpp in Sources */,
-				1AAF5160180E2C1A000584C8 /* TestEntries.cpp in Sources */,
 				1AAF524C180E2C1A000584C8 /* VisibleRect.cpp in Sources */,
 				1AAF5289180E2C31000584C8 /* main.cpp in Sources */,
 			);
@@ -3175,7 +3170,6 @@
 				1AAF515B180E2C1A000584C8 /* Box2dView.cpp in Sources */,
 				1AAF515D180E2C1A000584C8 /* GLES-Render.cpp in Sources */,
 				1AAF515F180E2C1A000584C8 /* Test.cpp in Sources */,
-				1AAF5161180E2C1A000584C8 /* TestEntries.cpp in Sources */,
 				1AAF524D180E2C1A000584C8 /* VisibleRect.cpp in Sources */,
 				1AAF5269180E2C26000584C8 /* RootViewController.mm in Sources */,
 				1AAF526A180E2C26000584C8 /* testsAppDelegate.mm in Sources */,
