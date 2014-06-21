@@ -279,16 +279,28 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
         contact->SetEnabled(false);
     }
     
+    for (int i =0; i<m_platformList.size(); i++) {
+        b2Fixture* slope = m_platformList[i];
+        if (fixtureA == slope) {
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    if (m_characters[i]->getB2fixture()->GetBody()->GetLinearVelocity().y > 0) {
+                        contact->SetEnabled(false);
+                    }
+                }
+            }
+        }
+    }
+    
     
     for (int i =0; i<m_upSlopeList.size(); i++) {
         b2Fixture* slope = m_upSlopeList[i];
         if (fixtureA == slope) {
-            
-            
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {
                     if (m_characters[i]->getFlyFlg()) {
                         log("upSlope continue %d",i);
+                        contact->SetEnabled(false);
                         continue;
                     }
                     
@@ -307,6 +319,7 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {
                     if (m_characters[i]->getFlyFlg()) {
+                        contact->SetEnabled(false);
                         continue;
                     }
                     log("downslope %d", i );
