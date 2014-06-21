@@ -166,7 +166,6 @@ Point OneSidedPlatform::getItemFinalPos(Point itemPos){
                     downList[downList.size()] = edgeShape;
                 }
             }
-            log("upSize=%d, downSize=%d", upList.size(), downList.size());
             if (upList.size() > 0) {
                 float tmpY = 0;
                 for (int i=0; i<upList.size(); i++) {
@@ -284,13 +283,15 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
     for (int i =0; i<m_upSlopeList.size(); i++) {
         b2Fixture* slope = m_upSlopeList[i];
         if (fixtureA == slope) {
-            log("fixturea= slope");
+            
             
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {
-                    b2Body * penguin = m_characters[i]->getB2fixture()->GetBody();
-                    //m_characters[i]->getB2fixture()->GetBody()->SetType(b2_kinematicBody);
-                    log("x=%f, y=%f",penguin->GetLinearVelocity().x, penguin->GetLinearVelocity().y);
+                    if (m_characters[i]->getFlyFlg()) {
+                        log("upSlope continue %d",i);
+                        continue;
+                    }
+                    
                     bool turnLeft = m_characters[i]->getTurnLeft();
                     m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(turnLeft ? -VELOCITY : VELOCITY, 0));
                     
@@ -302,14 +303,15 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
     for (int i =0; i<m_downSlopeList.size(); i++) {
         b2Fixture* slope = m_downSlopeList[i];
         if (fixtureA == slope) {
-            log("fixturea= slope");
             
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {
+                    if (m_characters[i]->getFlyFlg()) {
+                        continue;
+                    }
+                    log("downslope %d", i );
                     b2Body * penguin = m_characters[i]->getB2fixture()->GetBody();
-                    //m_characters[i]->getB2fixture()->GetBody()->SetType(b2_kinematicBody);
-                    log("x=%f, y=%f",penguin->GetLinearVelocity().x, penguin->GetLinearVelocity().y);
-                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(penguin->GetLinearVelocity().x, -3.f));
+                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(penguin->GetLinearVelocity().x, -2.f));
                     
                 }
             }
@@ -322,12 +324,22 @@ void OneSidedPlatform::Step(Settings* settings)
     Test::Step(settings);
     
     for (int i =0; i<m_characters.size(); i++) {
-        if (m_characters[i]->getFlyFlg()) {
+        if (m_characters[i]->getActionType() > 0) {
             m_characters[i]->setTimes(m_characters[i]->getTimes() + 1);
-            if(m_characters[i]->getTimes() >= 30){
-                m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3.0f,15.f));
-                m_characters[i]->setFlyFlg( false );
+            switch (m_characters[i]->getActionType()) {
+                case ITEM_CANNON:
+                    if(m_characters[i]->getTimes() >= 30){
+                        m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3.0f,15.f));
+                        m_characters[i]->setActionType( 0 );
+                        m_characters[i]->setTimes( 0 );
+                        m_characters[i]->setFlyFlg(true);
+                    }
+                    break;
+                    
+                default:
+                    break;
             }
+            
         }
     }
     
@@ -343,27 +355,6 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
 {
     b2Fixture* fixtureA = contact->GetFixtureA();
     b2Fixture* fixtureB = contact->GetFixtureB();
-
-//    if (fixtureA == m_platform)
-//    {
-//        //log("a is platform");
-//        fixtureB->GetBody()->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
-//    }
-//    
-//    if (fixtureB == m_platform)
-//    {
-//        //log("b is platform");
-//    }
-//    
-//    if (fixtureA == m_rock) {
-//        for (int i =0; i<m_characters.size(); i++) {
-//            if (fixtureB == m_characters[i]->getCharacter()) {
-//                m_characters[i]->getCharacter()->GetBody()->SetLinearVelocity(b2Vec2(-3.0f,0.f));
-//            }
-//        }
-//        
-//        //log("a is rock");
-//    }
     
     DictElement * ele;
     __Dictionary * itemList = BattleController::shared()->getItemList();
@@ -375,8 +366,41 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
             contact->SetEnabled(false);
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {
-                    m_characters[i]->setFlyFlg(true);
+                    m_characters[i]->setActionType(item->getType());
                     m_characters[i]->setTimes(0);
+                }
+            }
+        }
+    }
+    
+    for (int i=0; i<m_platformList.size(); i++) {
+        b2Fixture *edgeFixture = m_platformList[i];
+        if (fixtureA == edgeFixture) {
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    m_characters[i]->setFlyFlg(false);
+                }
+            }
+        }
+    }
+    
+    for (int i=0; i<m_upSlopeList.size(); i++) {
+        b2Fixture *edgeFixture = m_upSlopeList[i];
+        if (fixtureA == edgeFixture) {
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    m_characters[i]->setFlyFlg(false);
+                }
+            }
+        }
+    }
+    
+    for (int i=0; i<m_downSlopeList.size(); i++) {
+        b2Fixture *edgeFixture = m_downSlopeList[i];
+        if (fixtureA == edgeFixture) {
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    m_characters[i]->setFlyFlg(false);
                 }
             }
         }

@@ -27,11 +27,14 @@ class actor:public Object{
 private:
     CC_SYNTHESIZE(b2Fixture*, m_b2fixture, B2fixture);
     CC_SYNTHESIZE(int, m_times, Times);
-    CC_SYNTHESIZE(bool, m_flyFlg, FlyFlg);
+    CC_SYNTHESIZE(int, m_actionType, ActionType);
     CC_SYNTHESIZE(bool, m_turnLeft, TurnLeft);
+    CC_SYNTHESIZE(bool, m_flyFlg, FlyFlg);
 public:
     actor(){
         m_times = 0;
+        m_actionType = 0;
+        m_turnLeft  = false;
         m_flyFlg = false;
     }
     ~actor(){}
