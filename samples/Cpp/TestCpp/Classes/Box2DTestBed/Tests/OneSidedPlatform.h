@@ -28,6 +28,7 @@ private:
     CC_SYNTHESIZE(b2Fixture*, m_b2fixture, B2fixture);
     CC_SYNTHESIZE(int, m_times, Times);
     CC_SYNTHESIZE(bool, m_flyFlg, FlyFlg);
+    CC_SYNTHESIZE(bool, m_turnLeft, TurnLeft);
 public:
     actor(){
         m_times = 0;
@@ -73,7 +74,8 @@ public:
     void setItem(Object *item);
     std::map<int, b2Fixture *>m_wallList;
     std::map<int, b2Fixture *>m_platformList;
-    std::map<int, b2Fixture *>m_slopeList;
+    std::map<int, b2Fixture *>m_upSlopeList;
+    std::map<int, b2Fixture *>m_downSlopeList;
 };
 
 

@@ -12,6 +12,7 @@
 #include "BattleController.h"
 #include "json.h"
 #include "CommonUtils.h"
+const float VELOCITY = 3.f;
 USING_NS_CC;
 OneSidedPlatform::OneSidedPlatform(){}
 OneSidedPlatform * OneSidedPlatform::Create()
@@ -26,16 +27,6 @@ bool OneSidedPlatform::init()
     std::string filePath = FileUtils::getInstance()->fullPathForFilename("mission/mission0.json");
     Json::Value missionData;
     CommonUtils::fileToJSON(filePath, missionData);
-    
-    // Ground
-    {
-        b2BodyDef bd;
-        b2Body* ground = m_world->CreateBody(&bd);
-        
-        b2EdgeShape shape;
-        shape.Set(b2Vec2(-20.0f, 0.0f), b2Vec2(20.0f, 0.0f));
-        ground->CreateFixture(&shape, 0.0f);
-    }
     
     //初始化item位置
     Json::Value itemList = missionData["itemList"];
@@ -72,10 +63,11 @@ bool OneSidedPlatform::init()
             shape.m_radius = m_radius;
             b2Fixture * actor_fixture = body->CreateFixture(&shape, 20.0f);
             actor_fixture->SetFriction(0);
-            body->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
+            body->SetLinearVelocity(b2Vec2(VELOCITY, 0.0f));
             
             actor * tmp_actor = new actor();
             tmp_actor->setB2fixture(actor_fixture);
+            tmp_actor->setTurnLeft(false);
             m_characters[i] = tmp_actor;
         }
         //m_state = e_unknown;
@@ -104,8 +96,10 @@ bool OneSidedPlatform::init()
                 m_wallList[m_wallList.size()] = edgeFixture;
             }else if(startV.y == endV.y) {
                 m_platformList[m_platformList.size()] = edgeFixture;
-            }else{
-                m_slopeList[m_slopeList.size()] = edgeFixture;
+            }else if(startV.y < endV.y){
+                m_upSlopeList[m_upSlopeList.size()] = edgeFixture;
+            }else if(startV.y > endV.y){
+                m_downSlopeList[m_downSlopeList.size()] = edgeFixture;
             }
         }
     }
@@ -114,17 +108,100 @@ bool OneSidedPlatform::init()
 
 
 Point OneSidedPlatform::getItemFinalPos(Point itemPos){
-    if (itemPos.y < 0) {
+    //先看看在edge范围中么
+    std::map<int, b2EdgeShape*>edgeList;
+    bool inEdge =false;
+    for (int i=0; i<m_platformList.size(); i++) {
+        b2Fixture * platform = m_platformList[i];
+        b2EdgeShape * edgeShape = dynamic_cast<b2EdgeShape*>(platform->GetShape());
+        if (itemPos.x >= edgeShape->m_vertex1.x && itemPos.x <= edgeShape->m_vertex2.x) {
+            inEdge = true;
+            edgeList[edgeList.size()] = edgeShape;
+        }
+    }
+    
+    for (int i=0; i<m_upSlopeList.size(); i++) {
+        b2Fixture * upSlope = m_upSlopeList[i];
+        b2EdgeShape * edgeShape = dynamic_cast<b2EdgeShape*>(upSlope->GetShape());
+        if (itemPos.x >= edgeShape->m_vertex1.x && itemPos.x <= edgeShape->m_vertex2.x) {
+            inEdge = true;
+            edgeList[edgeList.size()] = edgeShape;
+        }
+    }
+    
+    for (int i=0; i<m_downSlopeList.size(); i++) {
+        b2Fixture * downSlope = m_downSlopeList[i];
+        b2EdgeShape * edgeShape = dynamic_cast<b2EdgeShape*>(downSlope->GetShape());
+        if (itemPos.x >= edgeShape->m_vertex1.x && itemPos.x <= edgeShape->m_vertex2.x) {
+            inEdge = true;
+            edgeList[edgeList.size()] = edgeShape;
+        }
+    }
+    
+    if (inEdge) {
+        
+        if (edgeList.size() == 1) {//快速出结果 减少迭代
+            b2EdgeShape * edgeShape = edgeList[0];
+            float x1 = edgeShape->m_vertex1.x;
+            float y1 =edgeShape->m_vertex1.y;
+            float x2 = edgeShape->m_vertex2.x;
+            float y2 =edgeShape->m_vertex2.y;
+            float y = (itemPos.x-x1)*(y2-y1)/(x2-x1) + y1;
+            return Point(itemPos.x, y);
+        }else{
+            //看看有没有在item下面的edge
+            float x = itemPos.x;
+            float y = itemPos.y;
+            std::map<int, b2EdgeShape*>upList;
+            std::map<int, b2EdgeShape*>downList;
+            for (int i=0; i<edgeList.size(); i++) {
+                b2EdgeShape * edgeShape = edgeList[i];
+                float x1 = edgeShape->m_vertex1.x;
+                float y1 =edgeShape->m_vertex1.y;
+                float x2 = edgeShape->m_vertex2.x;
+                float y2 =edgeShape->m_vertex2.y;
+                if((y-y1)*(x2-x1) - (y2-y1)*(x-x1) >=0 ){//在上面
+                    upList[upList.size()] = edgeShape;
+                }else{
+                    downList[downList.size()] = edgeShape;
+                }
+            }
+            log("upSize=%d, downSize=%d", upList.size(), downList.size());
+            if (upList.size() > 0) {
+                float tmpY = 0;
+                for (int i=0; i<upList.size(); i++) {
+                    b2EdgeShape * edgeShape = upList[0];
+                    float x1 = edgeShape->m_vertex1.x;
+                    float y1 =edgeShape->m_vertex1.y;
+                    float x2 = edgeShape->m_vertex2.x;
+                    float y2 =edgeShape->m_vertex2.y;
+                    float y = (itemPos.x-x1)*(y2-y1)/(x2-x1) + y1;
+                    if (y>tmpY) {
+                        tmpY = y;
+                    }
+                }
+                return Point(itemPos.x, tmpY);
+            }else{
+                float tmpY = 100;
+                for (int i=0; i<downList.size(); i++) {
+                    b2EdgeShape * edgeShape = downList[i];
+                    float x1 = edgeShape->m_vertex1.x;
+                    float y1 =edgeShape->m_vertex1.y;
+                    float x2 = edgeShape->m_vertex2.x;
+                    float y2 =edgeShape->m_vertex2.y;
+                    float y = (itemPos.x-x1)*(y2-y1)/(x2-x1) + y1;
+                    log("%f= (%f-%f)*(%f-%f)/(%f-%f) + %f",y,itemPos.x,x1,y2,y1,x2,x1,y1 );
+                    if (y<tmpY) {
+                        tmpY = y;
+                    }
+                }
+                return Point(itemPos.x, tmpY);
+            }
+            
+        }
+    }else{//ground
         return Point(itemPos.x, 0);
     }
-//    }else if(itemPos.y > m_platform->GetBody()->GetPosition().y &&
-//             itemPos.x <= m_platform->GetBody()->GetPosition().x + 1.5 &&
-//             itemPos.x >= m_platform->GetBody()->GetPosition().x - 1.5
-//             ){
-//        return Point(itemPos.x, m_platform->GetBody()->GetPosition().y);
-//    }else{
-//        return Point(itemPos.x, 0);
-//    }
 }
 
 void OneSidedPlatform::setItem(Object *obj){
@@ -181,7 +258,9 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
                 if(fixtureB == m_characters[i]->getB2fixture()){
                     b2Vec2 vec = m_characters[i]->getB2fixture()->GetBody()->GetLinearVelocity();
                     log("vec  i=%d x=%f y=%f",i, vec.x, vec.y);
-                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3, vec.y));
+                    bool turnLeft = vec.x > 0;
+                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(turnLeft ? -VELOCITY : VELOCITY, vec.y));
+                    m_characters[i]->setTurnLeft(turnLeft);
                 }
             }
         }
@@ -199,6 +278,42 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
     }
     if (aIsCharacter && bIsCharacter) {
         contact->SetEnabled(false);
+    }
+    
+    
+    for (int i =0; i<m_upSlopeList.size(); i++) {
+        b2Fixture* slope = m_upSlopeList[i];
+        if (fixtureA == slope) {
+            log("fixturea= slope");
+            
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    b2Body * penguin = m_characters[i]->getB2fixture()->GetBody();
+                    //m_characters[i]->getB2fixture()->GetBody()->SetType(b2_kinematicBody);
+                    log("x=%f, y=%f",penguin->GetLinearVelocity().x, penguin->GetLinearVelocity().y);
+                    bool turnLeft = m_characters[i]->getTurnLeft();
+                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(turnLeft ? -VELOCITY : VELOCITY, 0));
+                    
+                }
+            }
+        }
+    }
+    
+    for (int i =0; i<m_downSlopeList.size(); i++) {
+        b2Fixture* slope = m_downSlopeList[i];
+        if (fixtureA == slope) {
+            log("fixturea= slope");
+            
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    b2Body * penguin = m_characters[i]->getB2fixture()->GetBody();
+                    //m_characters[i]->getB2fixture()->GetBody()->SetType(b2_kinematicBody);
+                    log("x=%f, y=%f",penguin->GetLinearVelocity().x, penguin->GetLinearVelocity().y);
+                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(penguin->GetLinearVelocity().x, -3.f));
+                    
+                }
+            }
+        }
     }
 }
 
@@ -228,22 +343,7 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
 {
     b2Fixture* fixtureA = contact->GetFixtureA();
     b2Fixture* fixtureB = contact->GetFixtureB();
-    
-    for (int i =0; i<m_slopeList.size(); i++) {
-        b2Fixture* slope = m_slopeList[i];
-        if (fixtureA == slope) {
-            log("fixturea= slope");
-            
-            for (int i =0; i<m_characters.size(); i++) {
-                if (fixtureB == m_characters[i]->getB2fixture()) {
-                    //m_characters[i]->getB2fixture()->GetBody()->SetType(b2_kinematicBody);
-                    log("friction=%f",m_characters[i]->getB2fixture()->GetFriction());
-                    log("density=%f",m_characters[i]->getB2fixture()->GetDensity());
-                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3.0f,1.5f));
-                }
-            }
-        }
-    }
+
 //    if (fixtureA == m_platform)
 //    {
 //        //log("a is platform");
