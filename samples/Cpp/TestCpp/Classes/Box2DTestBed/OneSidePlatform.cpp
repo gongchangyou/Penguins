@@ -10,6 +10,8 @@
 #include "cocos2d.h"
 #include "Constant.h"
 #include "BattleController.h"
+#include "json.h"
+#include "CommonUtils.h"
 USING_NS_CC;
 OneSidedPlatform::OneSidedPlatform(){}
 OneSidedPlatform * OneSidedPlatform::Create()
@@ -20,6 +22,11 @@ OneSidedPlatform * OneSidedPlatform::Create()
 }
 bool OneSidedPlatform::init()
 {
+    //读取数据
+    std::string filePath = FileUtils::getInstance()->fullPathForFilename("mission/mission0.json");
+    Json::Value missionData;
+    CommonUtils::fileToJSON(filePath, missionData);
+    
     // Ground
     {
         b2BodyDef bd;
@@ -30,32 +37,15 @@ bool OneSidedPlatform::init()
         ground->CreateFixture(&shape, 0.0f);
     }
     
-    // Platform
-    {
+    //初始化item位置
+    Json::Value itemList = missionData["itemList"];
+    for (int i=0; i<itemList.size(); i++) {
+        Json::Value itemData = itemList[i];
+        int itemType = itemData["type"].asInt();
+        float x = itemData["x"].asFloat();
+        float y = itemData["y"].asFloat();
         b2BodyDef bd;
-        bd.position.Set(0.0f, 10.0f);
-        b2Body* body = m_world->CreateBody(&bd);
-        
-        b2PolygonShape shape;
-        shape.SetAsBox(3.0f, 0.5f);
-        m_platform = body->CreateFixture(&shape, 0.0f);
-        m_bottom = 10.0f - 0.5f;
-        m_top = 10.0f + 0.5f;
-    }
-    // Wall
-    {
-        b2BodyDef bd;
-        bd.position.Set(10.0f, 0.0f);
-        b2Body* body = m_world->CreateBody(&bd);
-        
-        b2PolygonShape shape;
-        shape.SetAsBox(3.0f, 3.f);
-        m_rock = body->CreateFixture(&shape, 0.0f);
-    }
-    // cannon
-    {
-        b2BodyDef bd;
-        bd.position.Set(-8.0f, 0.0f);
+        bd.position.Set(x, y);
         b2Body* body = m_world->CreateBody(&bd);
         
         b2PolygonShape shape;
@@ -65,9 +55,10 @@ bool OneSidedPlatform::init()
         //初始化固定道具，那么需要初始化图片
         Item *item = Item::create();
         item->setB2fixture(cannon);
-        item->setType(ITEM_CANNON);
+        item->setType(itemType);
         BattleController::shared()->getItemList()->setObject(item, 0);
     }
+    
     // Actor
     {
         for(int i=0; i<10; i++){
@@ -80,10 +71,11 @@ bool OneSidedPlatform::init()
             b2CircleShape shape;
             shape.m_radius = m_radius;
             b2Fixture * actor_fixture = body->CreateFixture(&shape, 20.0f);
+            actor_fixture->SetFriction(0);
             body->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
             
             actor * tmp_actor = new actor();
-            tmp_actor->setCharacter(actor_fixture);
+            tmp_actor->setB2fixture(actor_fixture);
             m_characters[i] = tmp_actor;
         }
         //m_state = e_unknown;
@@ -94,10 +86,28 @@ bool OneSidedPlatform::init()
         b2BodyDef bd;
         b2Body* ground = m_world->CreateBody(&bd);
 
-        b2EdgeShape shape;
-        b2Vec2 v1(0.f,0.f), v2(2.f, 1.f);
-        shape.Set(v1, v2);
-        ground->CreateFixture(&shape, 0.0f);
+        log("file Path=%s", filePath.c_str());
+        Json::Value edgeList = missionData["edgeList"];
+        log("edgeList size =%d", edgeList.size());
+        for (int i=0; i<edgeList.size(); i++) {
+            Json::Value vecStart = edgeList[i]["start"];
+            b2Vec2 startV = b2Vec2(vecStart["x"].asFloat(), vecStart["y"].asFloat());
+            
+            Json::Value vecEnd = edgeList[i]["end"];
+            b2Vec2 endV = b2Vec2(vecEnd["x"].asFloat(), vecEnd["y"].asFloat());
+            b2EdgeShape shape;
+            
+            shape.Set(startV, endV);
+            b2Fixture * edgeFixture = ground->CreateFixture(&shape, 0.0f);
+            CCLOG("b2EdgeShapepos x=%f ,y=%f", edgeFixture->GetBody()->GetPosition().x, edgeFixture->GetBody()->GetPosition().y);
+            if (startV.x == endV.x) {
+                m_wallList[m_wallList.size()] = edgeFixture;
+            }else if(startV.y == endV.y) {
+                m_platformList[m_platformList.size()] = edgeFixture;
+            }else{
+                m_slopeList[m_slopeList.size()] = edgeFixture;
+            }
+        }
     }
     return true;
 }
@@ -106,14 +116,15 @@ bool OneSidedPlatform::init()
 Point OneSidedPlatform::getItemFinalPos(Point itemPos){
     if (itemPos.y < 0) {
         return Point(itemPos.x, 0);
-    }else if(itemPos.y > m_platform->GetBody()->GetPosition().y &&
-             itemPos.x <= m_platform->GetBody()->GetPosition().x + 1.5 &&
-             itemPos.x >= m_platform->GetBody()->GetPosition().x - 1.5
-             ){
-        return Point(itemPos.x, m_platform->GetBody()->GetPosition().y);
-    }else{
-        return Point(itemPos.x, 0);
     }
+//    }else if(itemPos.y > m_platform->GetBody()->GetPosition().y &&
+//             itemPos.x <= m_platform->GetBody()->GetPosition().x + 1.5 &&
+//             itemPos.x >= m_platform->GetBody()->GetPosition().x - 1.5
+//             ){
+//        return Point(itemPos.x, m_platform->GetBody()->GetPosition().y);
+//    }else{
+//        return Point(itemPos.x, 0);
+//    }
 }
 
 void OneSidedPlatform::setItem(Object *obj){
@@ -163,46 +174,32 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
         }
     }
     
+    for (int i=0; i<m_wallList.size(); i++) {
+        b2Fixture *wall = m_wallList[i];
+        if (fixtureA == wall) {
+            for (int i =0; i<m_characters.size(); i++) {
+                if(fixtureB == m_characters[i]->getB2fixture()){
+                    b2Vec2 vec = m_characters[i]->getB2fixture()->GetBody()->GetLinearVelocity();
+                    log("vec  i=%d x=%f y=%f",i, vec.x, vec.y);
+                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3, vec.y));
+                }
+            }
+        }
+    }
     
     bool aIsCharacter = false;
     bool bIsCharacter = false;
     for (int i =0; i<m_characters.size(); i++) {
-        if(fixtureA == m_characters[i]->getCharacter()){
+        if(fixtureA == m_characters[i]->getB2fixture()){
             aIsCharacter = true;
         }
-        if(fixtureB == m_characters[i]->getCharacter()){
+        if(fixtureB == m_characters[i]->getB2fixture()){
             bIsCharacter = true;
         }
     }
     if (aIsCharacter && bIsCharacter) {
         contact->SetEnabled(false);
     }
-    //		if (fixtureA != m_platform && fixtureA != m_character)
-    //		{
-    //			return;
-    //		}else{
-    //            //log("on platform");
-    //        }
-    //
-    //		if (fixtureB != m_platform && fixtureB != m_character)
-    //		{
-    //			return;
-    //		}
-    
-    //#if 1
-    //		b2Vec2 position = m_character->GetBody()->GetPosition();
-    //
-    //		if (position.y < m_top + m_radius - 3.0f * b2_linearSlop)
-    //		{
-    //			contact->SetEnabled(false);
-    //		}
-    //#else
-    //        b2Vec2 v = m_character->GetBody()->GetLinearVelocity();
-    //        if (v.y > 0.0f)
-    //		{
-    //            contact->SetEnabled(false);
-    //        }
-    //#endif
 }
 
 void OneSidedPlatform::Step(Settings* settings)
@@ -213,7 +210,7 @@ void OneSidedPlatform::Step(Settings* settings)
         if (m_characters[i]->getFlyFlg()) {
             m_characters[i]->setTimes(m_characters[i]->getTimes() + 1);
             if(m_characters[i]->getTimes() >= 30){
-                m_characters[i]->getCharacter()->GetBody()->SetLinearVelocity(b2Vec2(3.0f,15.f));
+                m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3.0f,15.f));
                 m_characters[i]->setFlyFlg( false );
             }
         }
@@ -232,26 +229,41 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
     b2Fixture* fixtureA = contact->GetFixtureA();
     b2Fixture* fixtureB = contact->GetFixtureB();
     
-    if (fixtureA == m_platform)
-    {
-        //log("a is platform");
-        fixtureB->GetBody()->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
-    }
-    
-    if (fixtureB == m_platform)
-    {
-        //log("b is platform");
-    }
-    
-    if (fixtureA == m_rock) {
-        for (int i =0; i<m_characters.size(); i++) {
-            if (fixtureB == m_characters[i]->getCharacter()) {
-                m_characters[i]->getCharacter()->GetBody()->SetLinearVelocity(b2Vec2(-3.0f,0.f));
+    for (int i =0; i<m_slopeList.size(); i++) {
+        b2Fixture* slope = m_slopeList[i];
+        if (fixtureA == slope) {
+            log("fixturea= slope");
+            
+            for (int i =0; i<m_characters.size(); i++) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
+                    //m_characters[i]->getB2fixture()->GetBody()->SetType(b2_kinematicBody);
+                    log("friction=%f",m_characters[i]->getB2fixture()->GetFriction());
+                    log("density=%f",m_characters[i]->getB2fixture()->GetDensity());
+                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(3.0f,1.5f));
+                }
             }
         }
-        
-        //log("a is rock");
     }
+//    if (fixtureA == m_platform)
+//    {
+//        //log("a is platform");
+//        fixtureB->GetBody()->SetLinearVelocity(b2Vec2(3.0f, 0.0f));
+//    }
+//    
+//    if (fixtureB == m_platform)
+//    {
+//        //log("b is platform");
+//    }
+//    
+//    if (fixtureA == m_rock) {
+//        for (int i =0; i<m_characters.size(); i++) {
+//            if (fixtureB == m_characters[i]->getCharacter()) {
+//                m_characters[i]->getCharacter()->GetBody()->SetLinearVelocity(b2Vec2(-3.0f,0.f));
+//            }
+//        }
+//        
+//        //log("a is rock");
+//    }
     
     DictElement * ele;
     __Dictionary * itemList = BattleController::shared()->getItemList();
@@ -262,17 +274,14 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
         if (fixtureA == itemBox2d) {
             contact->SetEnabled(false);
             for (int i =0; i<m_characters.size(); i++) {
-                if (fixtureB == m_characters[i]->getCharacter()) {
+                if (fixtureB == m_characters[i]->getB2fixture()) {
                     m_characters[i]->setFlyFlg(true);
                     m_characters[i]->setTimes(0);
                 }
             }
         }
     }
-    
-    if (fixtureB == m_rock) {
-        //log("b is rock");
-    }
+
 }
 
 

@@ -8,6 +8,7 @@
 
 #include "CommonUtils.h"
 #include "Constant.h"
+#include "json.h"
 
 namespace CommonUtils
 {
@@ -31,4 +32,13 @@ namespace CommonUtils
         
         return Point(x, y);
     }
+    
+    bool fileToJSON( std::string path, Json::Value &value )
+    {
+        __String* jsonStr = __String::createWithContentsOfFile(path.c_str());
+        
+        Json::Reader reader = Json::Reader();
+        return reader.parse(jsonStr->getCString(), value);
+    }
+    
 }

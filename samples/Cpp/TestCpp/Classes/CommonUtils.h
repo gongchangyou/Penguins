@@ -10,10 +10,12 @@
 #define __CommonUtils__
 #include "cocos2d.h"
 #include "Constant.h"
+#include "json.h"
 USING_NS_CC;
 namespace CommonUtils{
     Point convertBox2DToWin(Point box2dPoint);
     Point convertWinToBox2D(Point winPoint);
+    bool fileToJSON( std::string path, Json::Value &value );
 }
 using namespace CommonUtils;
 #endif /* defined(__cocos2d_samples__CommonUtils__) */

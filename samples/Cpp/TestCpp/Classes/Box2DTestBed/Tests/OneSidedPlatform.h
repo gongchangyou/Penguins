@@ -25,7 +25,7 @@ USING_NS_CC;
 
 class actor:public Object{
 private:
-    CC_SYNTHESIZE(b2Fixture*, m_character, Character);
+    CC_SYNTHESIZE(b2Fixture*, m_b2fixture, B2fixture);
     CC_SYNTHESIZE(int, m_times, Times);
     CC_SYNTHESIZE(bool, m_flyFlg, FlyFlg);
 public:
@@ -63,14 +63,17 @@ public:
     }
 	float32 m_radius, m_top, m_bottom;
 	State m_state;
-	b2Fixture* m_platform;
-    b2Fixture* m_rock;
     
     std::map<int, actor*> m_characters;
     void delItem(Item *item);
+    
+    
 public:
     Point getItemFinalPos(Point itemPos);
     void setItem(Object *item);
+    std::map<int, b2Fixture *>m_wallList;
+    std::map<int, b2Fixture *>m_platformList;
+    std::map<int, b2Fixture *>m_slopeList;
 };
 
 

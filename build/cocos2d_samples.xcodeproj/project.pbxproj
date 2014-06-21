@@ -346,6 +346,12 @@
 		819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3571955683500A3D8B4 /* BattleController.cpp */; };
 		819DE35A1955690200A3D8B4 /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3571955683500A3D8B4 /* BattleController.cpp */; };
 		819DE35B1955690200A3D8B4 /* BattleController.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3581955683500A3D8B4 /* BattleController.h */; };
+		819DE35D19558F2500A3D8B4 /* mission in Resources */ = {isa = PBXBuildFile; fileRef = 819DE35C19558F2500A3D8B4 /* mission */; };
+		819DE3621955915D00A3D8B4 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3611955915D00A3D8B4 /* jsoncpp.cpp */; };
+		819DE36319559CF100A3D8B4 /* json-forwards.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35F1955915D00A3D8B4 /* json-forwards.h */; };
+		819DE36419559CF100A3D8B4 /* json.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3601955915D00A3D8B4 /* json.h */; };
+		819DE36519559CF100A3D8B4 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3611955915D00A3D8B4 /* jsoncpp.cpp */; };
+		819DE36619559E4300A3D8B4 /* mission in Resources */ = {isa = PBXBuildFile; fileRef = 819DE35C19558F2500A3D8B4 /* mission */; };
 		81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
 		81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
 		81C6852C194DDF1D00903F2B /* OneSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OneSidePlatform.cpp */; };
@@ -1459,6 +1465,10 @@
 		819DE35319555C5B00A3D8B4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		819DE3571955683500A3D8B4 /* BattleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleController.cpp; sourceTree = "<group>"; };
 		819DE3581955683500A3D8B4 /* BattleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleController.h; sourceTree = "<group>"; };
+		819DE35C19558F2500A3D8B4 /* mission */ = {isa = PBXFileReference; lastKnownFileType = folder; name = mission; path = ../samples/Cpp/TestCpp/Resources/mission; sourceTree = "<group>"; };
+		819DE35F1955915D00A3D8B4 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		819DE3601955915D00A3D8B4 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		819DE3611955915D00A3D8B4 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
 		81C6851F194D7F8700903F2B /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleScene.h; sourceTree = "<group>"; };
 		81C68522194DCCFC00903F2B /* CommonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtils.cpp; sourceTree = "<group>"; };
 		81C68523194DCCFC00903F2B /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
@@ -1970,6 +1980,7 @@
 		1AAF4FA5180E2C17000584C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				819DE35E1955915D00A3D8B4 /* json */,
 				81C68535194DE24B00903F2B /* BattleScene.cpp */,
 				81C6851F194D7F8700903F2B /* BattleScene.h */,
 				1AAF4FB5180E2C17000584C8 /* AppDelegate.cpp */,
@@ -2064,6 +2075,7 @@
 		1AAF538C180E3628000584C8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				819DE35C19558F2500A3D8B4 /* mission */,
 				37C819601875DF2A00930C57 /* animations */,
 				37C819611875DF2A00930C57 /* armature */,
 				37C819621875DF2A00930C57 /* background-music-aac.wav */,
@@ -2153,6 +2165,16 @@
 				46A15FCA1807A4F9005B8026 /* libluabindings iOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		819DE35E1955915D00A3D8B4 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				819DE35F1955915D00A3D8B4 /* json-forwards.h */,
+				819DE3601955915D00A3D8B4 /* json.h */,
+				819DE3611955915D00A3D8B4 /* jsoncpp.cpp */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2959,6 +2981,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819DE35D19558F2500A3D8B4 /* mission in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2966,6 +2989,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819DE36619559E4300A3D8B4 /* mission in Resources */,
 				37C81A071875DF2B00930C57 /* ipadhd in Resources */,
 				1AAF526B180E2C26000584C8 /* Default-568h@2x.png in Resources */,
 				1AAF526C180E2C26000584C8 /* Default.png in Resources */,
@@ -3161,6 +3185,7 @@
 				81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */,
 				81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */,
 				81C6852C194DDF1D00903F2B /* OneSidePlatform.cpp in Sources */,
+				819DE3621955915D00A3D8B4 /* jsoncpp.cpp in Sources */,
 				819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */,
 				819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */,
 			);
@@ -3170,6 +3195,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819DE36319559CF100A3D8B4 /* json-forwards.h in Sources */,
+				819DE36419559CF100A3D8B4 /* json.h in Sources */,
+				819DE36519559CF100A3D8B4 /* jsoncpp.cpp in Sources */,
 				819DE35A1955690200A3D8B4 /* BattleController.cpp in Sources */,
 				819DE35B1955690200A3D8B4 /* BattleController.h in Sources */,
 				819DE3551955660500A3D8B4 /* Item.cpp in Sources */,
