@@ -9,6 +9,7 @@
 #include "OneSidedPlatform.h"
 #include "cocos2d.h"
 #include "Constant.h"
+#include "BattleController.h"
 USING_NS_CC;
 OneSidedPlatform::OneSidedPlatform(){}
 OneSidedPlatform * OneSidedPlatform::Create()
@@ -61,7 +62,10 @@ bool OneSidedPlatform::init()
         shape.SetAsBox(0.5f, 1.f);
         b2Fixture *cannon = body->CreateFixture(&shape, 0.0f);
         
-        m_cannons[0] = cannon;
+        //初始化固定道具，那么需要初始化图片
+        Item *item = Item::create();
+        item->setB2fixture(cannon);
+        BattleController::shared()->getItemList()->setObject(item, 0);
     }
     // Actor
     {
@@ -102,20 +106,25 @@ Point OneSidedPlatform::getItemFinalPos(Point itemPos){
 }
 
 void OneSidedPlatform::setItem(Object *obj){
-    PickItem *item = dynamic_cast<PickItem*>(obj);
+    Item *item = dynamic_cast<Item*>(obj);
+    
     switch (item->getType()) {
         case ITEM_CANNON:
         {
-            Point pos = item->getPos();
+            Point pos = item->getTmpBox2dPos();
             b2BodyDef bd;
             bd.position.Set(pos.x, pos.y);
             b2Body* body = m_world->CreateBody(&bd);
             
             b2PolygonShape shape;
             shape.SetAsBox(0.5f, 1.f);
+            b2Fixture * b2fixture = body->CreateFixture(&shape, 0.0f);
+            item->setB2fixture(b2fixture);
             
-            int size = m_cannons.size();
-            m_cannons[size] = body->CreateFixture(&shape, 0.0f);
+            __Array * keyAry = BattleController::shared()->getItemList()->allKeysForObject(item);
+            int key = dynamic_cast<__Integer*>(keyAry->getObjectAtIndex(0))->getValue();
+            BattleController::shared()->getItemList()->setObject(item, key);
+
         }
             break;
             
@@ -132,9 +141,12 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
     b2Fixture* fixtureA = contact->GetFixtureA();
     b2Fixture* fixtureB = contact->GetFixtureB();
     
-    for (int i=0; i<m_cannons.size(); i++) {
-        b2Fixture *cannon = m_cannons[i];
-        if (fixtureA == cannon || fixtureB == cannon) {
+    DictElement * ele;
+    __Dictionary * itemList = BattleController::shared()->getItemList();
+    CCDICT_FOREACH(itemList, ele){
+        Item * item = dynamic_cast<Item*>(ele->getObject());
+        b2Fixture * itemBox2d = item->getB2fixture();
+        if (fixtureA == itemBox2d || fixtureB == itemBox2d) {
             contact->SetEnabled(false);
             break;
         }
@@ -230,9 +242,13 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
         //log("a is rock");
     }
     
-    for (int i=0; i<m_cannons.size(); i++) {
-        b2Fixture *cannon = m_cannons[i];
-        if (fixtureA == cannon) {
+    DictElement * ele;
+    __Dictionary * itemList = BattleController::shared()->getItemList();
+    CCDICT_FOREACH(itemList, ele){
+        Item * item = dynamic_cast<Item*>(ele->getObject());
+        b2Fixture *itemBox2d = item->getB2fixture();
+        
+        if (fixtureA == itemBox2d) {
             contact->SetEnabled(false);
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getCharacter()) {

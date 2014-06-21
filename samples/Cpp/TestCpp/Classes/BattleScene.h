@@ -11,9 +11,9 @@
 
 #include "cocos2d.h"
 #include "Constant.h"
-#include "pickItem.h"
 #include "CommonUtils.h"
 #include "Box2dView.h"
+#include "Item.h"
 USING_NS_CC;
 const int TAG_ITEM = 100;
 class BattleScene : public Layer{
@@ -31,7 +31,8 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
 private:
     EventListenerTouchOneByOne * _touchListener;
-    Sprite * m_item;
+    Sprite * m_itemSprite;
+    Item * m_item;
     Box2DView * m_view;
     OneSidedPlatform * m_contactListener;
     

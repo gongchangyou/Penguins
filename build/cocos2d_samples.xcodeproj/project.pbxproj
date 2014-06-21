@@ -340,12 +340,16 @@
 		460E45871807FDC3000CDD6D /* libCocosDenshion Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FB81807A4F9005B8026 /* libCocosDenshion Mac.a */; };
 		460E45DF18080238000CDD6D /* libcocos2dx iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FBE1807A4F9005B8026 /* libcocos2dx iOS.a */; };
 		460E45E018080238000CDD6D /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FC61807A4F9005B8026 /* libCocosDenshion iOS.a */; };
+		819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
+		819DE3551955660500A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
+		819DE3561955660500A3D8B4 /* Item.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35319555C5B00A3D8B4 /* Item.h */; };
+		819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3571955683500A3D8B4 /* BattleController.cpp */; };
+		819DE35A1955690200A3D8B4 /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3571955683500A3D8B4 /* BattleController.cpp */; };
+		819DE35B1955690200A3D8B4 /* BattleController.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3581955683500A3D8B4 /* BattleController.h */; };
 		81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
 		81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
 		81C6852C194DDF1D00903F2B /* OnseSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */; };
 		81C6852D194DE04600903F2B /* OnseSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */; };
-		81C68530194DE10B00903F2B /* PickItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852E194DE10B00903F2B /* PickItem.cpp */; };
-		81C68531194DE11600903F2B /* PickItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852E194DE10B00903F2B /* PickItem.cpp */; };
 		81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68535194DE24B00903F2B /* BattleScene.cpp */; };
 		81C68537194DE34000903F2B /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68535194DE24B00903F2B /* BattleScene.cpp */; };
 		A01E16881784BDA100B0CA4A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482E165F399D007D4F18 /* libz.dylib */; };
@@ -1451,13 +1455,15 @@
 		37C8197E1875DF2B00930C57 /* TileMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TileMaps; path = ../samples/Cpp/TestCpp/Resources/TileMaps; sourceTree = "<group>"; };
 		37C8197F1875DF2B00930C57 /* zwoptex */ = {isa = PBXFileReference; lastKnownFileType = folder; name = zwoptex; path = ../samples/Cpp/TestCpp/Resources/zwoptex; sourceTree = "<group>"; };
 		46A15F9C1807A4F8005B8026 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
+		819DE35219555C5B00A3D8B4 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		819DE35319555C5B00A3D8B4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		819DE3571955683500A3D8B4 /* BattleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleController.cpp; sourceTree = "<group>"; };
+		819DE3581955683500A3D8B4 /* BattleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleController.h; sourceTree = "<group>"; };
 		81C6851F194D7F8700903F2B /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleScene.h; sourceTree = "<group>"; };
 		81C68522194DCCFC00903F2B /* CommonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtils.cpp; sourceTree = "<group>"; };
 		81C68523194DCCFC00903F2B /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		81C68525194DCDF000903F2B /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnseSidePlatform.cpp; sourceTree = "<group>"; };
-		81C6852E194DE10B00903F2B /* PickItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PickItem.cpp; sourceTree = "<group>"; };
-		81C6852F194DE10B00903F2B /* PickItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickItem.h; sourceTree = "<group>"; };
 		81C68535194DE24B00903F2B /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleScene.cpp; sourceTree = "<group>"; };
 		A01E16931784BDA100B0CA4A /* Simple Game iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Game iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01E17721784C06E00B0CA4A /* Test JavaScript iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test JavaScript iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1966,8 +1972,6 @@
 			children = (
 				81C68535194DE24B00903F2B /* BattleScene.cpp */,
 				81C6851F194D7F8700903F2B /* BattleScene.h */,
-				81C6852E194DE10B00903F2B /* PickItem.cpp */,
-				81C6852F194DE10B00903F2B /* PickItem.h */,
 				1AAF4FB5180E2C17000584C8 /* AppDelegate.cpp */,
 				1AAF4FB6180E2C17000584C8 /* AppDelegate.h */,
 				1AAF4FB7180E2C17000584C8 /* BaseTest.cpp */,
@@ -1980,6 +1984,10 @@
 				81C68522194DCCFC00903F2B /* CommonUtils.cpp */,
 				81C68523194DCCFC00903F2B /* CommonUtils.h */,
 				81C68525194DCDF000903F2B /* Constant.h */,
+				819DE35219555C5B00A3D8B4 /* Item.cpp */,
+				819DE35319555C5B00A3D8B4 /* Item.h */,
+				819DE3571955683500A3D8B4 /* BattleController.cpp */,
+				819DE3581955683500A3D8B4 /* BattleController.h */,
 			);
 			name = Classes;
 			path = ../samples/Cpp/TestCpp/Classes;
@@ -3150,10 +3158,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C68530194DE10B00903F2B /* PickItem.cpp in Sources */,
 				81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */,
 				81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */,
 				81C6852C194DDF1D00903F2B /* OnseSidePlatform.cpp in Sources */,
+				819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */,
+				819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3161,8 +3170,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				819DE35A1955690200A3D8B4 /* BattleController.cpp in Sources */,
+				819DE35B1955690200A3D8B4 /* BattleController.h in Sources */,
+				819DE3551955660500A3D8B4 /* Item.cpp in Sources */,
+				819DE3561955660500A3D8B4 /* Item.h in Sources */,
 				81C68537194DE34000903F2B /* BattleScene.cpp in Sources */,
-				81C68531194DE11600903F2B /* PickItem.cpp in Sources */,
 				81C6852D194DE04600903F2B /* OnseSidePlatform.cpp in Sources */,
 				81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */,
 				1AAF5155180E2C1A000584C8 /* AppDelegate.cpp in Sources */,

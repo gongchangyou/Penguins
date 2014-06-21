@@ -20,7 +20,7 @@
 #define ONE_SIDED_PLATFORM_H
 #include "cocos2d.h"
 #include "Test.h"
-#include "PickItem.h"
+#include "Item.h"
 USING_NS_CC;
 
 class actor:public Object{
@@ -67,7 +67,6 @@ public:
     b2Fixture* m_rock;
     
     std::map<int, actor*> m_characters;
-    std::map<int, b2Fixture*> m_cannons;
     
 public:
     Point getItemFinalPos(Point itemPos);
