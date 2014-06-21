@@ -348,8 +348,8 @@
 		819DE35B1955690200A3D8B4 /* BattleController.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE3581955683500A3D8B4 /* BattleController.h */; };
 		81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
 		81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68522194DCCFC00903F2B /* CommonUtils.cpp */; };
-		81C6852C194DDF1D00903F2B /* OnseSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */; };
-		81C6852D194DE04600903F2B /* OnseSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */; };
+		81C6852C194DDF1D00903F2B /* OneSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OneSidePlatform.cpp */; };
+		81C6852D194DE04600903F2B /* OneSidePlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C6852A194DDF1D00903F2B /* OneSidePlatform.cpp */; };
 		81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68535194DE24B00903F2B /* BattleScene.cpp */; };
 		81C68537194DE34000903F2B /* BattleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C68535194DE24B00903F2B /* BattleScene.cpp */; };
 		A01E16881784BDA100B0CA4A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C6482E165F399D007D4F18 /* libz.dylib */; };
@@ -1463,7 +1463,7 @@
 		81C68522194DCCFC00903F2B /* CommonUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonUtils.cpp; sourceTree = "<group>"; };
 		81C68523194DCCFC00903F2B /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
 		81C68525194DCDF000903F2B /* Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
-		81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OnseSidePlatform.cpp; sourceTree = "<group>"; };
+		81C6852A194DDF1D00903F2B /* OneSidePlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OneSidePlatform.cpp; sourceTree = "<group>"; };
 		81C68535194DE24B00903F2B /* BattleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleScene.cpp; sourceTree = "<group>"; };
 		A01E16931784BDA100B0CA4A /* Simple Game iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Game iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01E17721784C06E00B0CA4A /* Test JavaScript iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test JavaScript iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2003,7 +2003,7 @@
 				1AAF4FC1180E2C17000584C8 /* Test.cpp */,
 				1AAF4FC2180E2C17000584C8 /* Test.h */,
 				1AAF4FDB180E2C17000584C8 /* OneSidedPlatform.h */,
-				81C6852A194DDF1D00903F2B /* OnseSidePlatform.cpp */,
+				81C6852A194DDF1D00903F2B /* OneSidePlatform.cpp */,
 			);
 			path = Box2DTestBed;
 			sourceTree = "<group>";
@@ -3160,7 +3160,7 @@
 			files = (
 				81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */,
 				81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */,
-				81C6852C194DDF1D00903F2B /* OnseSidePlatform.cpp in Sources */,
+				81C6852C194DDF1D00903F2B /* OneSidePlatform.cpp in Sources */,
 				819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */,
 				819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */,
 			);
@@ -3175,7 +3175,7 @@
 				819DE3551955660500A3D8B4 /* Item.cpp in Sources */,
 				819DE3561955660500A3D8B4 /* Item.h in Sources */,
 				81C68537194DE34000903F2B /* BattleScene.cpp in Sources */,
-				81C6852D194DE04600903F2B /* OnseSidePlatform.cpp in Sources */,
+				81C6852D194DE04600903F2B /* OneSidePlatform.cpp in Sources */,
 				81C68529194DDD3400903F2B /* CommonUtils.cpp in Sources */,
 				1AAF5155180E2C1A000584C8 /* AppDelegate.cpp in Sources */,
 				1AAF5157180E2C1A000584C8 /* BaseTest.cpp in Sources */,

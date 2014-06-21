@@ -132,6 +132,7 @@ void Box2DView::onTouchEnded(Touch* touch, Event* event)
 void Box2DView::setItem(Object *item){
     m_test->setItem(item);
 }
+
 // void Box2DView::accelerometer(UIAccelerometer* accelerometer, Acceleration* acceleration)
 // {
 //     //// Only run for valid values

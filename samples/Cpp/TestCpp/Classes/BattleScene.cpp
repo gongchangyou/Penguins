@@ -95,6 +95,11 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
         if (item->getPic()->getBoundingBox().containsPoint(touch->getLocation())) {
             m_itemSprite = item->getPic();
             m_item = item;
+            
+            //通知box2d删除b2Fixture
+            if (item->getB2fixture()) {
+                m_contactListener->delItem(item);
+            }
         }
     }
     return true;

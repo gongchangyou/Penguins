@@ -27,7 +27,7 @@ bool OneSidedPlatform::init()
         
         b2EdgeShape shape;
         shape.Set(b2Vec2(-20.0f, 0.0f), b2Vec2(20.0f, 0.0f));
-        b2Fixture * groundFixture = ground->CreateFixture(&shape, 0.0f);
+        ground->CreateFixture(&shape, 0.0f);
     }
     
     // Platform
@@ -65,6 +65,7 @@ bool OneSidedPlatform::init()
         //初始化固定道具，那么需要初始化图片
         Item *item = Item::create();
         item->setB2fixture(cannon);
+        item->setType(ITEM_CANNON);
         BattleController::shared()->getItemList()->setObject(item, 0);
     }
     // Actor
@@ -88,6 +89,16 @@ bool OneSidedPlatform::init()
         //m_state = e_unknown;
     }
     
+    //edge
+    {
+        b2BodyDef bd;
+        b2Body* ground = m_world->CreateBody(&bd);
+
+        b2EdgeShape shape;
+        b2Vec2 v1(0.f,0.f), v2(2.f, 1.f);
+        shape.Set(v1, v2);
+        ground->CreateFixture(&shape, 0.0f);
+    }
     return true;
 }
 
@@ -262,4 +273,9 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
     if (fixtureB == m_rock) {
         //log("b is rock");
     }
+}
+
+
+void OneSidedPlatform::delItem(Item *item){
+    m_world->DestroyBody(item->getB2fixture()->GetBody());
 }

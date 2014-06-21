@@ -30,6 +30,7 @@ public:
 
     static Box2DView* viewWithEntryID(int entryId);
     void setItem(Object *item);
+
 protected:
     
     CustomCommand _customCmd;

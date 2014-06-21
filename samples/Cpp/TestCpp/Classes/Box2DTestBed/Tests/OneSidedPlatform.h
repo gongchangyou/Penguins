@@ -67,7 +67,7 @@ public:
     b2Fixture* m_rock;
     
     std::map<int, actor*> m_characters;
-    
+    void delItem(Item *item);
 public:
     Point getItemFinalPos(Point itemPos);
     void setItem(Object *item);
