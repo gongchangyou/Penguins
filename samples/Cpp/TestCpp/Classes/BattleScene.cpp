@@ -116,6 +116,9 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
     __Dictionary * itemList = BattleController::shared()->getItemList();
     CCDICT_FOREACH(itemList, obj){
         Item * item = dynamic_cast<Item*>(obj->getObject());
+        if (item->getIsLocked()) {
+            continue;
+        }
         if (item->getPic()->getBoundingBox().containsPoint(touch->getLocation())) {
             m_itemSprite = item->getPic();
             m_item = item;

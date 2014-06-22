@@ -77,8 +77,7 @@ public:
     void setItem(Object *item);
     std::map<int, b2Fixture *>m_wallList;
     std::map<int, b2Fixture *>m_platformList;
-    std::map<int, b2Fixture *>m_upSlopeList;
-    std::map<int, b2Fixture *>m_downSlopeList;
+    std::map<int, b2Fixture *>m_slopeList;
 };
 
 

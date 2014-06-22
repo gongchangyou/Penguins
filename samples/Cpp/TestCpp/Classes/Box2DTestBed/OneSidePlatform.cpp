@@ -47,6 +47,7 @@ bool OneSidedPlatform::init()
         Item *item = Item::create();
         item->setB2fixture(cannon);
         item->setType(itemType);
+        item->setIsLocked(true);
         BattleController::shared()->getItemList()->setObject(item, 0);
     }
     
@@ -96,10 +97,8 @@ bool OneSidedPlatform::init()
                 m_wallList[m_wallList.size()] = edgeFixture;
             }else if(startV.y == endV.y) {
                 m_platformList[m_platformList.size()] = edgeFixture;
-            }else if(startV.y < endV.y){
-                m_upSlopeList[m_upSlopeList.size()] = edgeFixture;
-            }else if(startV.y > endV.y){
-                m_downSlopeList[m_downSlopeList.size()] = edgeFixture;
+            }else{
+                m_slopeList[m_slopeList.size()] = edgeFixture;
             }
         }
     }
@@ -120,18 +119,9 @@ Point OneSidedPlatform::getItemFinalPos(Point itemPos){
         }
     }
     
-    for (int i=0; i<m_upSlopeList.size(); i++) {
-        b2Fixture * upSlope = m_upSlopeList[i];
+    for (int i=0; i<m_slopeList.size(); i++) {
+        b2Fixture * upSlope = m_slopeList[i];
         b2EdgeShape * edgeShape = dynamic_cast<b2EdgeShape*>(upSlope->GetShape());
-        if (itemPos.x >= edgeShape->m_vertex1.x && itemPos.x <= edgeShape->m_vertex2.x) {
-            inEdge = true;
-            edgeList[edgeList.size()] = edgeShape;
-        }
-    }
-    
-    for (int i=0; i<m_downSlopeList.size(); i++) {
-        b2Fixture * downSlope = m_downSlopeList[i];
-        b2EdgeShape * edgeShape = dynamic_cast<b2EdgeShape*>(downSlope->GetShape());
         if (itemPos.x >= edgeShape->m_vertex1.x && itemPos.x <= edgeShape->m_vertex2.x) {
             inEdge = true;
             edgeList[edgeList.size()] = edgeShape;
@@ -296,8 +286,8 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
     }
     
     
-    for (int i =0; i<m_upSlopeList.size(); i++) {
-        b2Fixture* slope = m_upSlopeList[i];
+    for (int i =0; i<m_slopeList.size(); i++) {
+        b2Fixture* slope = m_slopeList[i];
         if (fixtureA == slope) {
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {
@@ -308,27 +298,16 @@ void OneSidedPlatform::PreSolve(b2Contact* contact, const b2Manifold* oldManifol
                     }
                     
                     bool turnLeft = m_characters[i]->getTurnLeft();
-                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(turnLeft ? -VELOCITY : VELOCITY, 0));
                     
-                }
-            }
-        }
-    }
-    
-    for (int i =0; i<m_downSlopeList.size(); i++) {
-        b2Fixture* slope = m_downSlopeList[i];
-        if (fixtureA == slope) {
-            
-            for (int i =0; i<m_characters.size(); i++) {
-                if (fixtureB == m_characters[i]->getB2fixture()) {
-                    if (m_characters[i]->getFlyFlg()) {
-                        contact->SetEnabled(false);
-                        continue;
+                    b2EdgeShape * shape = dynamic_cast<b2EdgeShape*>(slope->GetShape());
+                    if ( (shape->m_vertex2.y > shape->m_vertex1.y && !turnLeft) || (shape->m_vertex1.y > shape->m_vertex2.y && turnLeft) ) {
+                        //上坡
+                        m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(turnLeft ? -VELOCITY : VELOCITY, 0));
+                    }else{
+                        //下坡
+                        b2Body * penguin = m_characters[i]->getB2fixture()->GetBody();
+                        m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(penguin->GetLinearVelocity().x, -2.f));
                     }
-                    log("downslope %d", i );
-                    b2Body * penguin = m_characters[i]->getB2fixture()->GetBody();
-                    m_characters[i]->getB2fixture()->GetBody()->SetLinearVelocity(b2Vec2(penguin->GetLinearVelocity().x, -2.f));
-                    
                 }
             }
         }
@@ -351,7 +330,14 @@ void OneSidedPlatform::Step(Settings* settings)
                         m_characters[i]->setFlyFlg(true);
                     }
                     break;
-                    
+                case ITEM_END:
+                    if(m_characters[i]->getTimes() >= 30){
+                        m_world->DestroyBody(m_characters[i]->getB2fixture()->GetBody());
+                        m_characters[i]->setActionType( 0 );
+                        m_characters[i]->setTimes( 0 );
+                        m_characters[i]->setFlyFlg(true);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -400,19 +386,8 @@ void OneSidedPlatform::BeginContact(b2Contact* contact)
         }
     }
     
-    for (int i=0; i<m_upSlopeList.size(); i++) {
-        b2Fixture *edgeFixture = m_upSlopeList[i];
-        if (fixtureA == edgeFixture) {
-            for (int i =0; i<m_characters.size(); i++) {
-                if (fixtureB == m_characters[i]->getB2fixture()) {
-                    m_characters[i]->setFlyFlg(false);
-                }
-            }
-        }
-    }
-    
-    for (int i=0; i<m_downSlopeList.size(); i++) {
-        b2Fixture *edgeFixture = m_downSlopeList[i];
+    for (int i=0; i<m_slopeList.size(); i++) {
+        b2Fixture *edgeFixture = m_slopeList[i];
         if (fixtureA == edgeFixture) {
             for (int i =0; i<m_characters.size(); i++) {
                 if (fixtureB == m_characters[i]->getB2fixture()) {

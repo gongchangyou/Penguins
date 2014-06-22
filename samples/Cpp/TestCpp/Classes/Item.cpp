@@ -14,6 +14,7 @@ Item::Item(){
     m_type = 0;
     m_tmpBox2dPos = Point::ZERO;
     m_originPoint = Point::ZERO;
+    m_isLocked = false;
 }
 
 Item::~Item(){

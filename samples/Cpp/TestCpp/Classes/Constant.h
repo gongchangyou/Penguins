@@ -15,6 +15,7 @@ const float BOX2D_GROUND_Y = 80;
 
 enum ITEM_TYPE{
     ITEM_CANNON = 1,
-    ITEM_TRAMPOLINE
+    ITEM_TRAMPOLINE,
+    ITEM_END
 };
 #endif
