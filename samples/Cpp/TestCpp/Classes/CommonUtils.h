@@ -16,6 +16,7 @@ namespace CommonUtils{
     Point convertBox2DToWin(Point box2dPoint);
     Point convertWinToBox2D(Point winPoint);
     bool fileToJSON( std::string path, Json::Value &value );
+    std::string IntToString(int number);
 }
 using namespace CommonUtils;
 #endif /* defined(__cocos2d_samples__CommonUtils__) */

@@ -41,4 +41,12 @@ namespace CommonUtils
         return reader.parse(jsonStr->getCString(), value);
     }
     
+    std::string IntToString(int number)
+    {
+        
+        std::stringstream ss;
+        ss << number;
+        return ss.str();
+    }
+    
 }

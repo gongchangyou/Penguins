@@ -10,6 +10,7 @@
 #include "BattleController.h"
 #include "Constant.h"
 #include "json.h"
+#include "ResultScene.h"
 
 const Rect ITEM_RECT = Rect(160,0, 160,40);
 
@@ -204,6 +205,9 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
 
 void BattleScene::endMission(Object *obj){
     log("battlescene change scene %d", m_seconds);
+    ResultScene *resultScene = ResultScene::create();
+    resultScene->setSeconds(m_seconds);
+    CCDirector::getInstance()->replaceScene(resultScene);
 }
 
 void BattleScene::updateEvent(float delta){

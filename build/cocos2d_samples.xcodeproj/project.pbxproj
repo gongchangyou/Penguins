@@ -224,6 +224,9 @@
 		8166DF511956941D00E8D1A4 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF4C195693C000E8D1A4 /* MenuScene.cpp */; };
 		8166DF521956941D00E8D1A4 /* MenuScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF4D195693C000E8D1A4 /* MenuScene.h */; };
 		8166DF531956B3CC00E8D1A4 /* BattleScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 81C6851F194D7F8700903F2B /* BattleScene.h */; };
+		8166DF561956CEC600E8D1A4 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF541956CEC600E8D1A4 /* ResultScene.cpp */; };
+		8166DF571956D06500E8D1A4 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF541956CEC600E8D1A4 /* ResultScene.cpp */; };
+		8166DF581956D06500E8D1A4 /* ResultScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF551956CEC600E8D1A4 /* ResultScene.h */; };
 		819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
 		819DE3551955660500A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
 		819DE3561955660500A3D8B4 /* Item.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35319555C5B00A3D8B4 /* Item.h */; };
@@ -1316,6 +1319,8 @@
 		46A15F9C1807A4F8005B8026 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		8166DF4C195693C000E8D1A4 /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		8166DF4D195693C000E8D1A4 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		8166DF541956CEC600E8D1A4 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultScene.cpp; sourceTree = "<group>"; };
+		8166DF551956CEC600E8D1A4 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultScene.h; sourceTree = "<group>"; };
 		819DE35219555C5B00A3D8B4 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		819DE35319555C5B00A3D8B4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		819DE3571955683500A3D8B4 /* BattleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleController.cpp; sourceTree = "<group>"; };
@@ -1856,6 +1861,8 @@
 				819DE3581955683500A3D8B4 /* BattleController.h */,
 				8166DF4C195693C000E8D1A4 /* MenuScene.cpp */,
 				8166DF4D195693C000E8D1A4 /* MenuScene.h */,
+				8166DF541956CEC600E8D1A4 /* ResultScene.cpp */,
+				8166DF551956CEC600E8D1A4 /* ResultScene.h */,
 			);
 			name = Classes;
 			path = ../samples/Cpp/TestCpp/Classes;
@@ -2893,6 +2900,7 @@
 				81C6852C194DDF1D00903F2B /* OneSidePlatform.cpp in Sources */,
 				819DE3621955915D00A3D8B4 /* jsoncpp.cpp in Sources */,
 				819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */,
+				8166DF561956CEC600E8D1A4 /* ResultScene.cpp in Sources */,
 				819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */,
 				8166DF4E195693C000E8D1A4 /* MenuScene.cpp in Sources */,
 			);
@@ -2902,6 +2910,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8166DF571956D06500E8D1A4 /* ResultScene.cpp in Sources */,
+				8166DF581956D06500E8D1A4 /* ResultScene.h in Sources */,
 				8166DF531956B3CC00E8D1A4 /* BattleScene.h in Sources */,
 				8166DF511956941D00E8D1A4 /* MenuScene.cpp in Sources */,
 				8166DF521956941D00E8D1A4 /* MenuScene.h in Sources */,

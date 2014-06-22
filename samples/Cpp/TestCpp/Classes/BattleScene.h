@@ -31,8 +31,8 @@ public:
     void onTouchEnded(Touch* touch, Event* event);
     void endMission(Object *obj);
     
-    void onEnter();
-    void onExit();
+    virtual void onEnter();
+    virtual void onExit();
     
     void updateEvent(float delta);
 private:
