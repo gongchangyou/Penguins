@@ -20,7 +20,7 @@ BattleController *BattleController::shared(){
 }
 
 bool BattleController::init(){
-    this->setItemList(__Dictionary::create());
+    this->reset();
     return true;
 }
 
@@ -30,4 +30,8 @@ BattleController::BattleController(){
 
 BattleController::~BattleController(){
     CC_SAFE_RELEASE(m_itemList);
+}
+
+void BattleController::reset(){
+    this->setItemList(__Dictionary::create());
 }

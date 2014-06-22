@@ -17,6 +17,7 @@ public:
     BattleController();
     virtual ~BattleController();
     bool init();
+    void reset();
 private:
     CC_SYNTHESIZE_RETAIN(__Dictionary*, m_itemList, ItemList);
 };

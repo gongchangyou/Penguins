@@ -227,6 +227,12 @@
 		8166DF561956CEC600E8D1A4 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF541956CEC600E8D1A4 /* ResultScene.cpp */; };
 		8166DF571956D06500E8D1A4 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF541956CEC600E8D1A4 /* ResultScene.cpp */; };
 		8166DF581956D06500E8D1A4 /* ResultScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF551956CEC600E8D1A4 /* ResultScene.h */; };
+		8166DF5B1956D30B00E8D1A4 /* SaveData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF591956D30B00E8D1A4 /* SaveData.cpp */; };
+		8166DF5E1956D63D00E8D1A4 /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF5C1956D63D00E8D1A4 /* UserInfo.cpp */; };
+		8166DF5F1956DA2700E8D1A4 /* UserInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF5C1956D63D00E8D1A4 /* UserInfo.cpp */; };
+		8166DF601956DA2700E8D1A4 /* UserInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF5D1956D63D00E8D1A4 /* UserInfo.h */; };
+		8166DF611956DA2700E8D1A4 /* SaveData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF591956D30B00E8D1A4 /* SaveData.cpp */; };
+		8166DF621956DA2700E8D1A4 /* SaveData.h in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF5A1956D30B00E8D1A4 /* SaveData.h */; };
 		819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
 		819DE3551955660500A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
 		819DE3561955660500A3D8B4 /* Item.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35319555C5B00A3D8B4 /* Item.h */; };
@@ -1321,6 +1327,10 @@
 		8166DF4D195693C000E8D1A4 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		8166DF541956CEC600E8D1A4 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultScene.cpp; sourceTree = "<group>"; };
 		8166DF551956CEC600E8D1A4 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultScene.h; sourceTree = "<group>"; };
+		8166DF591956D30B00E8D1A4 /* SaveData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SaveData.cpp; sourceTree = "<group>"; };
+		8166DF5A1956D30B00E8D1A4 /* SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveData.h; sourceTree = "<group>"; };
+		8166DF5C1956D63D00E8D1A4 /* UserInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UserInfo.cpp; sourceTree = "<group>"; };
+		8166DF5D1956D63D00E8D1A4 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		819DE35219555C5B00A3D8B4 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		819DE35319555C5B00A3D8B4 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		819DE3571955683500A3D8B4 /* BattleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleController.cpp; sourceTree = "<group>"; };
@@ -1840,6 +1850,8 @@
 		1AAF4FA5180E2C17000584C8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8166DF5C1956D63D00E8D1A4 /* UserInfo.cpp */,
+				8166DF5D1956D63D00E8D1A4 /* UserInfo.h */,
 				819DE35E1955915D00A3D8B4 /* json */,
 				81C68535194DE24B00903F2B /* BattleScene.cpp */,
 				81C6851F194D7F8700903F2B /* BattleScene.h */,
@@ -1863,6 +1875,8 @@
 				8166DF4D195693C000E8D1A4 /* MenuScene.h */,
 				8166DF541956CEC600E8D1A4 /* ResultScene.cpp */,
 				8166DF551956CEC600E8D1A4 /* ResultScene.h */,
+				8166DF591956D30B00E8D1A4 /* SaveData.cpp */,
+				8166DF5A1956D30B00E8D1A4 /* SaveData.h */,
 			);
 			name = Classes;
 			path = ../samples/Cpp/TestCpp/Classes;
@@ -2895,6 +2909,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8166DF5E1956D63D00E8D1A4 /* UserInfo.cpp in Sources */,
 				81C68524194DCCFC00903F2B /* CommonUtils.cpp in Sources */,
 				81C68536194DE24B00903F2B /* BattleScene.cpp in Sources */,
 				81C6852C194DDF1D00903F2B /* OneSidePlatform.cpp in Sources */,
@@ -2902,6 +2917,7 @@
 				819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */,
 				8166DF561956CEC600E8D1A4 /* ResultScene.cpp in Sources */,
 				819DE3591955683500A3D8B4 /* BattleController.cpp in Sources */,
+				8166DF5B1956D30B00E8D1A4 /* SaveData.cpp in Sources */,
 				8166DF4E195693C000E8D1A4 /* MenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2910,6 +2926,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8166DF5F1956DA2700E8D1A4 /* UserInfo.cpp in Sources */,
+				8166DF601956DA2700E8D1A4 /* UserInfo.h in Sources */,
+				8166DF611956DA2700E8D1A4 /* SaveData.cpp in Sources */,
+				8166DF621956DA2700E8D1A4 /* SaveData.h in Sources */,
 				8166DF571956D06500E8D1A4 /* ResultScene.cpp in Sources */,
 				8166DF581956D06500E8D1A4 /* ResultScene.h in Sources */,
 				8166DF531956B3CC00E8D1A4 /* BattleScene.h in Sources */,

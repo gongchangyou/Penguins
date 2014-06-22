@@ -12,6 +12,7 @@
 #include "BattleController.h"
 #include "json.h"
 #include "CommonUtils.h"
+#include "UserInfo.h"
 const float VELOCITY = 3.f;
 const int PENGUIN_COUNT = 20;
 USING_NS_CC;
@@ -28,7 +29,8 @@ OneSidedPlatform * OneSidedPlatform::Create()
 bool OneSidedPlatform::init()
 {
     //读取数据
-    std::string filePath = FileUtils::getInstance()->fullPathForFilename("mission/mission0.json");
+    __String *file = __String::createWithFormat("mission/mission%d.json", UserInfo::getInstance()->getCurMissionId());
+    std::string filePath = FileUtils::getInstance()->fullPathForFilename(file->getCString());
     Json::Value missionData;
     CommonUtils::fileToJSON(filePath, missionData);
     

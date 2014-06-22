@@ -11,7 +11,8 @@
 #include "Constant.h"
 #include "json.h"
 #include "ResultScene.h"
-
+#include "SaveData.h"
+#include "UserInfo.h"
 const Rect ITEM_RECT = Rect(160,0, 160,40);
 
 BattleScene::BattleScene(){
@@ -46,6 +47,8 @@ bool BattleScene::init(){
         return false;
     }
     
+    BattleController::shared()->reset();
+    
     auto director = Director::getInstance();
     Point visibleOrigin = director->getVisibleOrigin();
     Size visibleSize = director->getVisibleSize();
@@ -75,7 +78,8 @@ bool BattleScene::init(){
     
     //往controller里面添加 注意key 如果场上已经有了道具，这个起始点不是从0开始
     //读取数据
-    std::string filePath = FileUtils::getInstance()->fullPathForFilename("mission/mission0.json");
+    __String *file = __String::createWithFormat("mission/mission%d.json", UserInfo::getInstance()->getCurMissionId());
+    std::string filePath = FileUtils::getInstance()->fullPathForFilename(file->getCString());
     Json::Value missionData;
     CommonUtils::fileToJSON(filePath, missionData);
     
@@ -199,12 +203,15 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
         Action * action =  __CCCallFuncO::create(m_view, callfuncO_selector(Box2DView::setItem), m_item);
         this->runAction(Sequence::create(DelayTime::create(tmpTime), action, NULL));
         
-        
     }
 }
 
 void BattleScene::endMission(Object *obj){
     log("battlescene change scene %d", m_seconds);
+    
+    //更新saveData
+    SaveData::getInstance()->setMaxMissionId(UserInfo::getInstance()->getCurMissionId());
+    
     ResultScene *resultScene = ResultScene::create();
     resultScene->setSeconds(m_seconds);
     CCDirector::getInstance()->replaceScene(resultScene);
