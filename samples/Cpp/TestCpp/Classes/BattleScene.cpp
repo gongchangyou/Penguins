@@ -10,6 +10,9 @@
 #include "BattleController.h"
 #include "Constant.h"
 #include "json.h"
+
+const Rect ITEM_RECT = Rect(160,0, 160,40);
+
 BattleScene::BattleScene(){
     m_itemSprite = NULL;
 }
@@ -79,7 +82,10 @@ bool BattleScene::init(){
             default:
                 break;
         }
-        itemSprite->setPosition(Point(240 + 20 *i, 50));
+        
+        Point originPoint = Point(160 + 30 *i, 20);
+        itemSprite->setPosition(originPoint);
+        item->setOriginPoint(originPoint);
         this->addChild(itemSprite);
         item->setPic(itemSprite);
         BattleController::shared()->getItemList()->setObject(item, itemList->count());
@@ -116,7 +122,9 @@ bool BattleScene::onTouchBegan(Touch* touch, Event* event)
             
             //通知box2d删除b2Fixture
             if (item->getB2fixture()) {
+                //这两行顺序不能乱 delItem里面会用到b2Fixture
                 m_contactListener->delItem(item);
+                item->setB2fixture(NULL);
             }
         }
     }
@@ -147,6 +155,19 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
     
     log("Box2DView::onTouchEnded, pos: %f,%f -> %f,%f", touchLocation.x, touchLocation.y, nodePosition.x, nodePosition.y);
     if ( m_itemSprite ){
+        if (ITEM_RECT.containsPoint(m_itemSprite->getPosition())) {
+            __Dictionary *itemList = BattleController::shared()->getItemList();
+            DictElement *ele;
+            CCDICT_FOREACH(itemList, ele){
+                Item *item = dynamic_cast<Item*>(ele->getObject());
+                Point originPoint = item->getOriginPoint();
+                if (item->getPic() == m_itemSprite) {
+                    m_itemSprite->setPosition(originPoint);
+                    return;
+                }
+            }
+        }
+        
         Point itemBox2DPos = CommonUtils::convertWinToBox2D(m_itemSprite->getPosition());
         Point itemFinalPos = m_contactListener->getItemFinalPos(itemBox2DPos);
         log("itemFinalPos x = %f, y=%f", itemFinalPos.x, itemFinalPos.y);

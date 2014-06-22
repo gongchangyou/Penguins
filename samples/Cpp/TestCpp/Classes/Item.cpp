@@ -13,6 +13,7 @@ Item::Item(){
     m_b2fixture = NULL;
     m_type = 0;
     m_tmpBox2dPos = Point::ZERO;
+    m_originPoint = Point::ZERO;
 }
 
 Item::~Item(){

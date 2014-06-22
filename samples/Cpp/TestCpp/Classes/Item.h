@@ -25,6 +25,7 @@ private:
     CC_SYNTHESIZE(int, m_type, Type);
     
     CC_SYNTHESIZE(Point, m_tmpBox2dPos, TmpBox2dPos);
+    CC_SYNTHESIZE(Point, m_originPoint, OriginPoint);
 };
 
 #endif /* defined(__cocos2d_samples__Item__) */
