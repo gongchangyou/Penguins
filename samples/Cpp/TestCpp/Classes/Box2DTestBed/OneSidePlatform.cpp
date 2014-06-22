@@ -166,15 +166,18 @@ Point OneSidedPlatform::getItemFinalPos(Point itemPos){
                     downList[downList.size()] = edgeShape;
                 }
             }
+            
             if (upList.size() > 0) {
                 float tmpY = 0;
                 for (int i=0; i<upList.size(); i++) {
-                    b2EdgeShape * edgeShape = upList[0];
+                    b2EdgeShape * edgeShape = upList[i];
                     float x1 = edgeShape->m_vertex1.x;
                     float y1 =edgeShape->m_vertex1.y;
                     float x2 = edgeShape->m_vertex2.x;
                     float y2 =edgeShape->m_vertex2.y;
                     float y = (itemPos.x-x1)*(y2-y1)/(x2-x1) + y1;
+                    log("%f= (%f-%f)*(%f-%f)/(%f-%f) + %f",y,itemPos.x,x1,y2,y1,x2,x1,y1 );
+                    log("y=%f tmpY=%f", y,tmpY);
                     if (y>tmpY) {
                         tmpY = y;
                     }
