@@ -223,6 +223,7 @@
 		8166DF4E195693C000E8D1A4 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF4C195693C000E8D1A4 /* MenuScene.cpp */; };
 		8166DF511956941D00E8D1A4 /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF4C195693C000E8D1A4 /* MenuScene.cpp */; };
 		8166DF521956941D00E8D1A4 /* MenuScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 8166DF4D195693C000E8D1A4 /* MenuScene.h */; };
+		8166DF531956B3CC00E8D1A4 /* BattleScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 81C6851F194D7F8700903F2B /* BattleScene.h */; };
 		819DE35419555C5B00A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
 		819DE3551955660500A3D8B4 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35219555C5B00A3D8B4 /* Item.cpp */; };
 		819DE3561955660500A3D8B4 /* Item.h in Sources */ = {isa = PBXBuildFile; fileRef = 819DE35319555C5B00A3D8B4 /* Item.h */; };
@@ -2901,6 +2902,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8166DF531956B3CC00E8D1A4 /* BattleScene.h in Sources */,
 				8166DF511956941D00E8D1A4 /* MenuScene.cpp in Sources */,
 				8166DF521956941D00E8D1A4 /* MenuScene.h in Sources */,
 				819DE36319559CF100A3D8B4 /* json-forwards.h in Sources */,

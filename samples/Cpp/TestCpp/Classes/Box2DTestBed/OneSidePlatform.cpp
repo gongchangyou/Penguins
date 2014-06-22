@@ -13,8 +13,12 @@
 #include "json.h"
 #include "CommonUtils.h"
 const float VELOCITY = 3.f;
+const int PENGUIN_COUNT = 20;
 USING_NS_CC;
-OneSidedPlatform::OneSidedPlatform(){}
+OneSidedPlatform::OneSidedPlatform(){
+    m_actorCount = 0;
+}
+OneSidedPlatform::~OneSidedPlatform(){}
 OneSidedPlatform * OneSidedPlatform::Create()
 {
     OneSidedPlatform * platform = new OneSidedPlatform();
@@ -53,10 +57,10 @@ bool OneSidedPlatform::init()
     
     // Actor
     {
-        for(int i=0; i<10; i++){
+        for(int i=0; i<PENGUIN_COUNT; i++){
             b2BodyDef bd;
             bd.type = b2_dynamicBody;
-            bd.position.Set(-12.0f - i, .0f);
+            bd.position.Set(-12.0f - 0.1*i, .0f);
             b2Body* body = m_world->CreateBody(&bd);
             
             m_radius = 0.5f;
@@ -336,6 +340,11 @@ void OneSidedPlatform::Step(Settings* settings)
                         m_characters[i]->setActionType( 0 );
                         m_characters[i]->setTimes( 0 );
                         m_characters[i]->setFlyFlg(true);
+                        m_actorCount++;
+                        
+                        if (m_actorCount == PENGUIN_COUNT) {
+                            __NotificationCenter::getInstance()->postNotification(NC_END_MISSION_TAG, NULL);
+                        }
                     }
                     break;
                 default:

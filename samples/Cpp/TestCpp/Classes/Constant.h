@@ -12,6 +12,7 @@
 const int BOX2D_SCALE = 15;
 const float BOX2D_GROUND_Y = 80;
 
+const std::string NC_END_MISSION_TAG = "NcEndMissionTag";
 
 enum ITEM_TYPE{
     ITEM_CANNON = 1,

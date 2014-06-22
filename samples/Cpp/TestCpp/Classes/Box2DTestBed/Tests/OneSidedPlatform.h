@@ -52,7 +52,7 @@ public:
 	};
 
 	OneSidedPlatform();
-	
+	virtual ~OneSidedPlatform();
 	void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
 
 	void Step(Settings* settings);
@@ -75,9 +75,12 @@ public:
 public:
     Point getItemFinalPos(Point itemPos);
     void setItem(Object *item);
+private:
+    
     std::map<int, b2Fixture *>m_wallList;
     std::map<int, b2Fixture *>m_platformList;
     std::map<int, b2Fixture *>m_slopeList;
+    int m_actorCount;
 };
 
 

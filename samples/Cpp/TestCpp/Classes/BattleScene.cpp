@@ -15,6 +15,7 @@ const Rect ITEM_RECT = Rect(160,0, 160,40);
 
 BattleScene::BattleScene(){
     m_itemSprite = NULL;
+    m_seconds = 0;
 }
 
 BattleScene::~BattleScene(){
@@ -26,6 +27,17 @@ Scene * BattleScene::scene(){
     BattleScene *layer = BattleScene::create();
     scene->addChild(layer);
     return scene;
+}
+
+void BattleScene::onEnter(){
+    Layer::onEnter();
+    __NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(BattleScene::endMission), NC_END_MISSION_TAG, NULL);
+    schedule(schedule_selector(BattleScene::updateEvent),1.f);
+}
+void BattleScene::onExit(){
+    Layer::onExit();
+    unschedule(schedule_selector(BattleScene::updateEvent));
+    __NotificationCenter::getInstance()->removeObserver(this, NC_END_MISSION_TAG);
 }
 
 bool BattleScene::init(){
@@ -46,7 +58,6 @@ bool BattleScene::init(){
     
     //赋值m_contactListener
     m_contactListener = m_view->getContactListener();
-
     
     //先渲染场上的道具
     __Dictionary *itemList = BattleController::shared()->getItemList();
@@ -189,5 +200,13 @@ void BattleScene::onTouchEnded(Touch* touch, Event* event)
         
         
     }
-    
+}
+
+void BattleScene::endMission(Object *obj){
+    log("battlescene change scene %d", m_seconds);
+}
+
+void BattleScene::updateEvent(float delta){
+    log("delta %f", delta);
+    m_seconds ++;
 }

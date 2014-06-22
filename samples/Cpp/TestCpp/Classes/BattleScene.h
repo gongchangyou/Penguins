@@ -29,12 +29,19 @@ public:
     bool onTouchBegan(Touch* touch, Event* event);
     void onTouchMoved(Touch* touch, Event* event);
     void onTouchEnded(Touch* touch, Event* event);
+    void endMission(Object *obj);
+    
+    void onEnter();
+    void onExit();
+    
+    void updateEvent(float delta);
 private:
     EventListenerTouchOneByOne * _touchListener;
     Sprite * m_itemSprite;
     Item * m_item;
     Box2DView * m_view;
     OneSidedPlatform * m_contactListener;
+    int m_seconds;
     
 };
 #endif /* defined(__CrossKaiser__BattleScene__) */
