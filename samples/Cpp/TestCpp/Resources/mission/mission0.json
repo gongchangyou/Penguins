@@ -30,4 +30,8 @@
 //    "itemList":[
 //                {"type": 1, "x":-8, "y":0}
 //    ]
+    "useItemList":[
+                {"type": 1},
+                {"type": 1}
+    ]
 }

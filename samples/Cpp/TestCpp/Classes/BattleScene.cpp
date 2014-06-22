@@ -9,6 +9,7 @@
 #include "BattleScene.h"
 #include "BattleController.h"
 #include "Constant.h"
+#include "json.h"
 BattleScene::BattleScene(){
     m_itemSprite = NULL;
 }
@@ -42,12 +43,7 @@ bool BattleScene::init(){
     
     //赋值m_contactListener
     m_contactListener = m_view->getContactListener();
-    
-    //添加游戏道具
-    Sprite *arrow = Sprite::create("Images/arrows.png");
-    arrow->setPosition(Point(240, 50));
-    this->addChild(arrow);
-    
+
     
     //先渲染场上的道具
     __Dictionary *itemList = BattleController::shared()->getItemList();
@@ -63,10 +59,32 @@ bool BattleScene::init(){
     }
     
     //往controller里面添加 注意key 如果场上已经有了道具，这个起始点不是从0开始
-    Item * item = Item::create();
-    item->setType(ITEM_CANNON);
-    item->setPic(arrow);
-    BattleController::shared()->getItemList()->setObject(item, itemList->count());
+    //读取数据
+    std::string filePath = FileUtils::getInstance()->fullPathForFilename("mission/mission0.json");
+    Json::Value missionData;
+    CommonUtils::fileToJSON(filePath, missionData);
+    
+    //初始化item位置
+    Json::Value useItemList = missionData["useItemList"];
+    for (int i=0; i<useItemList.size(); i++) {
+        Item * item = Item::create();
+        int type = useItemList[i]["type"].asInt();
+        item->setType(type);
+        Sprite * itemSprite;
+        switch (type) {
+            case ITEM_CANNON:
+                itemSprite = Sprite::create("Images/arrows.png");
+                break;
+                
+            default:
+                break;
+        }
+        itemSprite->setPosition(Point(240 + 20 *i, 50));
+        this->addChild(itemSprite);
+        item->setPic(itemSprite);
+        BattleController::shared()->getItemList()->setObject(item, itemList->count());
+    }
+    
     
     // Adds Touch Event Listener
     auto listener = EventListenerTouchOneByOne::create();

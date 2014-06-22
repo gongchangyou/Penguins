@@ -10,7 +10,7 @@
 #define cocos2d_samples_Constant_h
 
 const int BOX2D_SCALE = 15;
-const float BOX2D_GROUND_Y = 100;
+const float BOX2D_GROUND_Y = 80;
 
 
 enum ITEM_TYPE{
